@@ -1,15 +1,15 @@
-a:link			{ font-family: Arial, Helvetica, sans-serif; color: #3333FF; text-decoration: underline; line-height: normal} 
-a:visited		{ font-family: Arial, Helvetica, sans-serif; color: #993399; text-decoration: underline; line-height: normal} 
+a:link			{ font-family: Arial, Helvetica, sans-serif; color: #3333FF; text-decoration: underline; line-height: normal}
+a:visited		{ font-family: Arial, Helvetica, sans-serif; color: #993399; text-decoration: underline; line-height: normal}
 #nolinelink		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10px; color: #0000FF; line-height: normal; text-decoration: none}
-#orangelink		{ font-family: Arial, Helvetica, sans-serif; color: #CC6600; text-decoration: underline; line-height: normal} 
+#orangelink		{ font-family: Arial, Helvetica, sans-serif; color: #CC6600; text-decoration: underline; line-height: normal}
 #blacklink		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10px;color: #000000 }
 #whitelink		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10px;color: #FFFFFF }
 
 .mainSmall		{ font-family: Verdana, Helvetica, sans-serif; font-size: 11px; line-height: normal}
 .mainSmallG		{ font-family: Verdana, Helvetica, sans-serif; font-size: 11px; line-height: normal; color: #666666}
 .mainBodyR		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; color: #990000}
-.mainBodyW		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; color: #FFFFFF} 
-.mainBody		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt} 
+.mainBodyW		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; color: #FFFFFF}
+.mainBody		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt}
 .mainTitle		{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; font-weight: bold}
 .mainTitleW		{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; color: #FFFFFF}
 .mainSearchTitle	{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; color: #666666}
@@ -27,8 +27,8 @@ a:visited		{ font-family: Arial, Helvetica, sans-serif; color: #993399; text-dec
 
 .e2kSmall		{ font-family: Verdana, Helvetica, sans-serif; font-size: 11px; line-height: normal}
 .e2kBodyR		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; color: #990000}
-.e2kBodyW		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; color: #FFFFFF} 
-.e2kBody		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt} 
+.e2kBodyW		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt; color: #FFFFFF}
+.e2kBody		{ font-family: Verdana, Helvetica, sans-serif; font-size: 10pt}
 .e2kTitle		{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; font-weight: bold}
 .e2kCalendar		{ font-family: Arial, Helvetica, sans-serif; font-size: 14pt; font-style: normal; font-weight: bold}
 .e2kSecHead		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-style: normal; font-weight: bold}
@@ -41,7 +41,7 @@ a:visited		{ font-family: Arial, Helvetica, sans-serif; color: #993399; text-dec
 .e2kVerySmall		{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px}
 
 p 			{font-family: Verdana, Helvetica, sans-serif; font-size: 10pt}
-.mainBColor		{background-color: #3EAAB8}
+.mainBColor		{background-color: #800000}
 .e2kBColor		{background-color: #1D0D71}
 .mainSearchBanner       {background-color:#F0F0F0}
 
@@ -96,14 +96,12 @@ filter: alpha(opacity=20);
 .month table td .day a,
 .month table td .day span {
     display: block;
-    font-size: 0.75em;
     width: 30px;
     height: 22px;
     padding-top: 8px;
 }
 .month table td .day a {
     color: #000;
-    font-weight: 700;
     text-decoration: none;
 }
 .month table td .day span {
@@ -111,8 +109,6 @@ filter: alpha(opacity=20);
     height: 19px;
 }
 .month table td .day a:hover {
-    font-size: 0.95em;
-    padding-top: 6px;
     height: 22px;
 }
 .month table td .date {
