@@ -38,7 +38,7 @@
   int yearWidth = 49;
   int monthWidth = 5;
 
-  for (int year = 1996; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
+  for (int year = 1991; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
     imgWidth += yearWidth;
 
   BubbleCalendarData data = new BubbleCalendarData(results);
@@ -109,7 +109,7 @@
         </div>
       </a>
       <%
-        for (int i = 1996; i <= Calendar.getInstance().get(Calendar.YEAR); i++) {
+        for (int i = 1991; i <= Calendar.getInstance().get(Calendar.YEAR); i++) {
           String curClass = "inactiveHighlight";
           if (data.yearNum == i) {
             curClass = "activeHighlight";
@@ -117,8 +117,8 @@
       %>
       <div class="wbChartThisContainer">
         <a style="text-decoration: none;" href="<%= queryPrefix + i + "0201000000*/" + data.searchUrlForHTML %>">
-          <div id="highlight-<%= i - 1996 %>"
-            onmouseover="showTrackers('inline'); setActiveYear(<%= i - 1996 %>)"
+          <div id="highlight-<%= i - 1991 %>"
+            onmouseover="showTrackers('inline'); setActiveYear(<%= i - 1991 %>)"
             class="<%= curClass %>"><%= i %></div>
         </a>
       </div>
@@ -328,7 +328,7 @@
     <h2>Note</h2>
     <p>This calendar view maps the number of times <%= data.searchUrlForHTML %> was crawled, <em>not</em> how many times the site was actually updated. More info in the <a href="<%= fmt.format("UIGlobal.helpUrl") %>">documentation</a>.</p>
   </div>
-  
+
   <script type="text/javascript" src="<%= staticPrefix %>js/jquery-1.4.2.min.js"></script>
   <script type="text/javascript" src="<%= staticPrefix %>js/excanvas.compiled.js"></script>
   <script type="text/javascript" src="<%= staticPrefix %>js/jquery.bt.min.js" charset="utf-8"></script>
@@ -341,11 +341,11 @@
     var wbPrefix = "<%= replayPrefix %>";
     var wbCurrentUrl = "<%= data.searchUrlForJS %>";
 
-    var curYear = <%= data.yearNum - 1996 %>;
+    var curYear = <%= data.yearNum - 1991 %>;
     var curMonth = -1;
     var yearCount = 15;
-    var firstYear = 1996;
-    var startYear = <%= data.yearNum - 1996 %>;
+    var firstYear = 1991;
+    var startYear = <%= data.yearNum - 1991 %>;
     var imgWidth = <%= imgWidth %>;
     var yearImgWidth = <%= yearWidth %>;
     var monthImgWidth = <%= monthWidth %>;
