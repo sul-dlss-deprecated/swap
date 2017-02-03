@@ -21,18 +21,18 @@ String replayPrefix = wbRequest.getAccessPoint().getReplayPrefix();
     <option value="urlquery"><%= fmt.format("AdvancedSearch.searchTypeExactOption") %></option>
     <option value="prefixquery"><%= fmt.format("AdvancedSearch.searchTypePrefixOption") %></option>
   </select>
-  <input type="TEXT" name="url" width="80">
+  <input type="TEXT" name="url" width="80" />
   <br></br>
   <%= fmt.format("AdvancedSearch.exactDate") %>
-  <input type="TEXT" name="exactdate" width="80">
+  <input type="TEXT" name="exactdate" width="80" />
   <br></br>
   <%= fmt.format("AdvancedSearch.earliestDate") %>
-  <input type="TEXT" name="startdate" width="80">
+  <input type="TEXT" name="startdate" width="80" />
   <br></br>
   <%= fmt.format("AdvancedSearch.latestDate") %>
-  <input type="TEXT" name="enddate" width="80">
+  <input type="TEXT" name="enddate" width="80" />
   <br></br>
-  <input type="SUBMIT" value="<%= fmt.format("AdvancedSearch.submitButton") %>">
+  <input type="SUBMIT" value="<%= fmt.format("AdvancedSearch.submitButton") %>" />
 </form>
 
 <jsp:include page="/WEB-INF/template/UI-footer.jsp" flush="true" />
