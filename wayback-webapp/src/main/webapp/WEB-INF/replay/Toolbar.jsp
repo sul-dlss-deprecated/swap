@@ -52,7 +52,7 @@ int imgHeight = 27;
 int monthWidth = 2;
 int yearWidth = 25;
 
-for (int year = 1996; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
+for (int year = 1991; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
   imgWidth += yearWidth;
 
 String yearFormatKey = "PartitionSize.dateHeader.yearGraphLabel";
@@ -75,7 +75,7 @@ var wbCurrentUrl = "<%= searchUrlJS %>";
 var curYear = -1;
 var curMonth = -1;
 var yearCount = 15;
-var firstYear = 1996;
+var firstYear = 1991;
 var imgWidth=<%= imgWidth %>;
 var yearImgWidth = <%= yearWidth %>;
 var monthImgWidth = <%= monthWidth %>;
@@ -143,7 +143,7 @@ function trackMouseMove(event,element) {
     zeroPad(day,2) + "000000";
 
   var monthString = prettyMonths[monthOfYear];
-  document.getElementById("displayYearEl").innerHTML = year + 1996;
+  document.getElementById("displayYearEl").innerHTML = year + 1991;
   document.getElementById("displayMonthEl").innerHTML = monthString;
   // looks too jarring when it changes..
   //document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
