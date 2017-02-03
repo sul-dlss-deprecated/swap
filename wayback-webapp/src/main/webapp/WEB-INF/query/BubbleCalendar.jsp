@@ -50,10 +50,6 @@
   Calendar cal = BubbleCalendarData.getUTCCalendar();
 %>
 
-<style type="text/css" src="<%= staticPrefix %>css/styles.css">
-@import url("<%= staticPrefix %>css/styles.css");
-</style>
-
 <div id="position">
   <div id="wbSearch">
     <div id="logo">
