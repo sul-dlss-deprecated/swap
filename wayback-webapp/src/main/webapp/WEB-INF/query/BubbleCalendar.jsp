@@ -54,152 +54,6 @@
 @import url("<%= staticPrefix %>css/styles.css");
 </style>
 
-<script type="text/javascript" src="<%= staticPrefix %>js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="<%= staticPrefix %>js/excanvas.compiled.js"></script>
-<script type="text/javascript" src="<%= staticPrefix %>js/jquery.bt.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="<%= staticPrefix %>js/jquery.hoverintent.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="<%= staticPrefix %>js/graph-calc.js" ></script>
-<!-- More ugly JS to manage the highlight over the graph -->
-<script type="text/javascript">
-  var firstDate = <%= data.dataStartMSSE %>;
-  var lastDate = <%= data.dataEndMSSE %>;
-  var wbPrefix = "<%= replayPrefix %>";
-  var wbCurrentUrl = "<%= data.searchUrlForJS %>";
-
-  var curYear = <%= data.yearNum - 1996 %>;
-  var curMonth = -1;
-  var yearCount = 15;
-  var firstYear = 1996;
-  var startYear = <%= data.yearNum - 1996 %>;
-  var imgWidth = <%= imgWidth %>;
-  var yearImgWidth = <%= yearWidth %>;
-  var monthImgWidth = <%= monthWidth %>;
-  var trackerVal = "none";
-
-  function showTrackers(val) {
-    if (val == trackerVal) {
-      return;
-    }
-    document.getElementById("wbMouseTrackYearImg").style.display = val;
-    trackerVal = val;
-  }
-  function getElementX2(obj) {
-    var thing = jQuery(obj);
-    if ((thing == undefined)
-        || (typeof thing == "undefined")
-        || (typeof thing.offset == "undefined")) {
-      return getElementX(obj);
-    }
-    return Math.round(thing.offset().left);
-  }
-  function setActiveYear(year) {
-    if (curYear != year) {
-      var yrOff = year * yearImgWidth;
-      document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
-      if (curYear != -1) {
-      	document.getElementById("highlight-"+curYear).setAttribute("class","inactiveHighlight");
-      }
-      document.getElementById("highlight-"+year).setAttribute("class","activeHighlight");
-      curYear = year;
-    }
-  }
-  function trackMouseMove(event,element) {
-    var eventX = getEventX(event);
-    var elementX = getElementX2(element);
-    var xOff = eventX - elementX;
-    if (xOff < 0) {
-      xOff = 0;
-    } else if (xOff > imgWidth) {
-      xOff = imgWidth;
-    }
-    var monthOff = xOff % yearImgWidth;
-    var year = Math.floor(xOff / yearImgWidth);
-    var yearStart = year * yearImgWidth;
-    var monthOfYear = Math.floor(monthOff / monthImgWidth);
-    if (monthOfYear > 11) {
-      monthOfYear = 11;
-    }
-    var month = (year * 12) + monthOfYear;
-    var day = 1;
-    if (monthOff % 2 == 1) {
-      day = 15;
-    }
-    var dateString =
-      zeroPad(year + firstYear) +
-      zeroPad(monthOfYear+1,2) +
-      zeroPad(day,2) + "000000";
-
-    var url = "<%= queryPrefix %>" + dateString + '*/' +  wbCurrentUrl;
-    document.getElementById('wm-graph-anchor').href = url;
-    setActiveYear(year);
-  }
-</script>
-
-<script type="text/javascript">
-  $().ready(function() {
-    $(".date").each(function(i) {
-      var actualsize = $(this).find(".hidden").text();
-      var size = actualsize * 12;
-      var offset = size / 2;
-      if (actualsize == 1) {size = 30, offset = 15;}
-      else if (actualsize == 2) {size = 40, offset = 20;}
-      else if (actualsize == 3) {size = 50, offset = 25;}
-      else if (actualsize == 4) {size = 60, offset = 30;}
-      else if (actualsize == 5) {size = 70, offset = 35;}
-      else if (actualsize == 6) {size = 80, offset = 40;}
-      else if (actualsize == 7) {size = 90, offset = 45;}
-      else if (actualsize == 8) {size = 100, offset = 50;}
-      else if (actualsize == 9) {size = 110, offset = 55;}
-      else if (actualsize >= 10) {size = 120, offset = 60;}
-      $(this).find("img").attr("src","<%= staticPrefix %>images/blueblob-dk.png");
-      $(this).find(".measure").css({'width':+size+'px','height':+size+'px','top':'-'+offset+'px','left':'-'+offset+'px'});
-    });
-    $(".day a").each(function(i) {
-      var dateClass = $(this).attr("class");
-      var dateId = "#"+dateClass;
-      $(this).hover(
-        function() {$(dateId).removeClass("opacity20");},
-        function() {$(dateId).addClass("opacity20");}
-      );
-    });
-    $(".tooltip").bt({
-      positions: ['top','right','left','bottom'],
-      contentSelector: "$(this).find('.pop').html()",
-      padding: 0,
-      width: '130px',
-      spikeGirth: 8,
-      spikeLength: 8,
-      overlap: 0,
-      cornerRadius: 5,
-      fill: '#efefef',
-      strokeWidth: 1,
-      strokeStyle: '#efefef',
-      shadow: true,
-      shadowColor: '#333',
-      shadowBlur: 5,
-      shadowOffsetX: 0,
-      shadowOffsetY: 0,
-      noShadowOpts: {strokeStyle:'#ccc'},
-      hoverIntentOpts: {interval:60,timeout:3500},
-      clickAnywhereToClose: true,
-      closeWhenOthersOpen: true,
-      windowMargin: 30,
-      cssStyles: {
-        fontSize: '12px',
-        fontFamily: '"Arial","Helvetica Neue","Helvetica",sans-serif',
-        lineHeight: 'normal',
-        padding: '10px',
-        color: '#333'
-      }
-    });
-
-    var yrCount = $(".wbChartThisContainer").size();
-    var yrTotal = <%= yearWidth %> * yrCount;
-    var yrPad = (930 - yrTotal) / 2;
-    $("#wbChartThis").css("padding-left",yrPad+"px");
-  });
-</script>
-
 <div id="position">
   <div id="wbSearch">
     <div id="logo">
@@ -474,6 +328,152 @@
     <h2>Note</h2>
     <p>This calendar view maps the number of times <%= data.searchUrlForHTML %> was crawled, <em>not</em> how many times the site was actually updated. More info in the <a href="<%= fmt.format("UIGlobal.helpUrl") %>">documentation</a>.</p>
   </div>
+  
+  <script type="text/javascript" src="<%= staticPrefix %>js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="<%= staticPrefix %>js/excanvas.compiled.js"></script>
+  <script type="text/javascript" src="<%= staticPrefix %>js/jquery.bt.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="<%= staticPrefix %>js/jquery.hoverintent.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="<%= staticPrefix %>js/graph-calc.js" ></script>
+  <!-- More ugly JS to manage the highlight over the graph -->
+  <script type="text/javascript">
+    var firstDate = <%= data.dataStartMSSE %>;
+    var lastDate = <%= data.dataEndMSSE %>;
+    var wbPrefix = "<%= replayPrefix %>";
+    var wbCurrentUrl = "<%= data.searchUrlForJS %>";
+
+    var curYear = <%= data.yearNum - 1996 %>;
+    var curMonth = -1;
+    var yearCount = 15;
+    var firstYear = 1996;
+    var startYear = <%= data.yearNum - 1996 %>;
+    var imgWidth = <%= imgWidth %>;
+    var yearImgWidth = <%= yearWidth %>;
+    var monthImgWidth = <%= monthWidth %>;
+    var trackerVal = "none";
+
+    function showTrackers(val) {
+      if (val == trackerVal) {
+        return;
+      }
+      document.getElementById("wbMouseTrackYearImg").style.display = val;
+      trackerVal = val;
+    }
+    function getElementX2(obj) {
+      var thing = jQuery(obj);
+      if ((thing == undefined)
+          || (typeof thing == "undefined")
+          || (typeof thing.offset == "undefined")) {
+        return getElementX(obj);
+      }
+      return Math.round(thing.offset().left);
+    }
+    function setActiveYear(year) {
+      if (curYear != year) {
+        var yrOff = year * yearImgWidth;
+        document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+        if (curYear != -1) {
+        	document.getElementById("highlight-"+curYear).setAttribute("class","inactiveHighlight");
+        }
+        document.getElementById("highlight-"+year).setAttribute("class","activeHighlight");
+        curYear = year;
+      }
+    }
+    function trackMouseMove(event,element) {
+      var eventX = getEventX(event);
+      var elementX = getElementX2(element);
+      var xOff = eventX - elementX;
+      if (xOff < 0) {
+        xOff = 0;
+      } else if (xOff > imgWidth) {
+        xOff = imgWidth;
+      }
+      var monthOff = xOff % yearImgWidth;
+      var year = Math.floor(xOff / yearImgWidth);
+      var yearStart = year * yearImgWidth;
+      var monthOfYear = Math.floor(monthOff / monthImgWidth);
+      if (monthOfYear > 11) {
+        monthOfYear = 11;
+      }
+      var month = (year * 12) + monthOfYear;
+      var day = 1;
+      if (monthOff % 2 == 1) {
+        day = 15;
+      }
+      var dateString =
+        zeroPad(year + firstYear) +
+        zeroPad(monthOfYear+1,2) +
+        zeroPad(day,2) + "000000";
+
+      var url = "<%= queryPrefix %>" + dateString + '*/' +  wbCurrentUrl;
+      document.getElementById('wm-graph-anchor').href = url;
+      setActiveYear(year);
+    }
+  </script>
+
+  <script type="text/javascript">
+    $().ready(function() {
+      $(".date").each(function(i) {
+        var actualsize = $(this).find(".hidden").text();
+        var size = actualsize * 12;
+        var offset = size / 2;
+        if (actualsize == 1) {size = 30, offset = 15;}
+        else if (actualsize == 2) {size = 40, offset = 20;}
+        else if (actualsize == 3) {size = 50, offset = 25;}
+        else if (actualsize == 4) {size = 60, offset = 30;}
+        else if (actualsize == 5) {size = 70, offset = 35;}
+        else if (actualsize == 6) {size = 80, offset = 40;}
+        else if (actualsize == 7) {size = 90, offset = 45;}
+        else if (actualsize == 8) {size = 100, offset = 50;}
+        else if (actualsize == 9) {size = 110, offset = 55;}
+        else if (actualsize >= 10) {size = 120, offset = 60;}
+        $(this).find("img").attr("src","<%= staticPrefix %>images/blueblob-dk.png");
+        $(this).find(".measure").css({'width':+size+'px','height':+size+'px','top':'-'+offset+'px','left':'-'+offset+'px'});
+      });
+      $(".day a").each(function(i) {
+        var dateClass = $(this).attr("class");
+        var dateId = "#"+dateClass;
+        $(this).hover(
+          function() {$(dateId).removeClass("opacity20");},
+          function() {$(dateId).addClass("opacity20");}
+        );
+      });
+      $(".tooltip").bt({
+        positions: ['top','right','left','bottom'],
+        contentSelector: "$(this).find('.pop').html()",
+        padding: 0,
+        width: '130px',
+        spikeGirth: 8,
+        spikeLength: 8,
+        overlap: 0,
+        cornerRadius: 5,
+        fill: '#efefef',
+        strokeWidth: 1,
+        strokeStyle: '#efefef',
+        shadow: true,
+        shadowColor: '#333',
+        shadowBlur: 5,
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        noShadowOpts: {strokeStyle:'#ccc'},
+        hoverIntentOpts: {interval:60,timeout:3500},
+        clickAnywhereToClose: true,
+        closeWhenOthersOpen: true,
+        windowMargin: 30,
+        cssStyles: {
+          fontSize: '12px',
+          fontFamily: '"Arial","Helvetica Neue","Helvetica",sans-serif',
+          lineHeight: 'normal',
+          padding: '10px',
+          color: '#333'
+        }
+      });
+
+      var yrCount = $(".wbChartThisContainer").size();
+      var yrTotal = <%= yearWidth %> * yrCount;
+      var yrPad = (930 - yrTotal) / 2;
+      $("#wbChartThis").css("padding-left",yrPad+"px");
+    });
+  </script>
 </div>
 
 <jsp:include page="/WEB-INF/template/UI-footer.jsp" flush="true" />
