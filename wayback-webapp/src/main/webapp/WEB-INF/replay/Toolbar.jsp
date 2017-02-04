@@ -340,106 +340,183 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() + 
 <script type="text/javascript" src="<%= staticPrefix %>js/su-wayback-m-bootstrap-tooltip.js" ></script>
 
 <script type="text/javascript">
+  function daysInMonth(month,year) {
+    return new Date(year, month, 0).getDate();
+  }
 
-var firstDate = <%= firstYearDate.getTime() %>;
-var lastDate = <%= lastYearDate.getTime() %>;
-var wbPrefix = "<%= replayPrefix %>";
-var wbCurrentUrl = "<%= searchUrlJS %>";
+  function sumDigitString(digits) {
+    var sum = 0;
+    for (var i=0; i< digits.length; i++){
+      var digit = digits[i];
+      sum = sum + parseInt(digit,16);
+    }
+    return sum;
+  }
 
-var curYear = -1;
-var curMonth = -1;
-var yearCount = 15;
-var firstYear = 1991;
-var imgWidth=<%= imgWidth %>;
-var yearImgWidth = <%= yearWidth %>;
-var monthImgWidth = <%= monthWidth %>;
-var trackerVal = "none";
-var displayDay = "<%= fmt.format("ToolBar.curDayText",data.curResult.getCaptureDate()) %>";
-var displayMonth = "<%= fmt.format("ToolBar.curMonthText",data.curResult.getCaptureDate()) %>";
-var displayYear = "<%= fmt.format("ToolBar.curYearText",data.curResult.getCaptureDate()) %>";
-var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  $().ready(function() {
+    // Stanford Wayback show/hide toggle
+    $("#su-wayback-m-visibility-toggle").click(function() {
+      $(this).text($(this).text() == 'Show overlay' ? 'Hide overlay' : 'Show overlay');
+      $("#su-wayback-m-toolbar-info").toggle();
+      //$.cookie();
+      SetCookie("toogle_mode", $(this).text().substring(0,4),1);
+      $("#su-wayback-toolbar-mode").val($(this).text());
+      return false;
+    });
 
-function showTrackers(val) {
-  if (val == trackerVal) {
-    return;
-  }
-  if (val == "inline") {
-    document.getElementById("displayYearEl").style.color = "#ec008c";
-    document.getElementById("displayMonthEl").style.color = "#ec008c";
-    document.getElementById("displayDayEl").style.color = "#ec008c";
-  } else {
-    document.getElementById("displayYearEl").innerHTML = displayYear;
-    document.getElementById("displayYearEl").style.color = "#ff0";
-    document.getElementById("displayMonthEl").innerHTML = displayMonth;
-    document.getElementById("displayMonthEl").style.color = "#ff0";
-    document.getElementById("displayDayEl").innerHTML = displayDay;
-    document.getElementById("displayDayEl").style.color = "#ff0";
-  }
- document.getElementById("wbMouseTrackYearImg").style.display = val;
- document.getElementById("wbMouseTrackMonthImg").style.display = val;
- trackerVal = val;
-}
-function getElementX2(obj) {
-  var thing = jQuery(obj);
-  if ((thing == undefined)
-      || (typeof thing == "undefined")
-      || (typeof thing.offset == "undefined")) {
-    return getElementX(obj);
-  }
-  return Math.round(thing.offset().left);
-}
-function trackMouseMove(event,element) {
-  var eventX = getEventX(event);
-  var elementX = getElementX2(element);
-  var xOff = eventX - elementX;
-  if (xOff < 0) {
-    xOff = 0;
-  } else if (xOff > imgWidth) {
-    xOff = imgWidth;
-  }
-  var monthOff = xOff % yearImgWidth;
+    var toogle_mode = SUWaybackGetCookie("toogle_mode");
 
-  var year = Math.floor(xOff / yearImgWidth);
-  var yearStart = year * yearImgWidth;
-  var monthOfYear = Math.floor(monthOff / monthImgWidth);
-  if (monthOfYear > 11) {
-    monthOfYear = 11;
-  }
-  // 1 extra border pixel at the left edge of the year:
-  var month = (year * 12) + monthOfYear;
-  var day = 1;
-  if (monthOff % 2 == 1) {
-    day = 15;
-  }
-  var dateString =
-    zeroPad(year + firstYear) +
-    zeroPad(monthOfYear+1,2) +
-    zeroPad(day,2) + "000000";
+    if (toogle_mode == null || toogle_mode == '' ){
+      $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+      $("#su-wayback-m-toolbar-info").toggle();
+    } else if (toogle_mode != null && toogle_mode == "Show"){
+      $("#su-wayback-m-visibility-toggle").text( 'Show overlay');
+      $("#su-wayback-m-toolbar-info").toggle();
+    }
 
-  var monthString = prettyMonths[monthOfYear];
-  document.getElementById("displayYearEl").innerHTML = year + 1991;
-  document.getElementById("displayMonthEl").innerHTML = monthString;
-  // looks too jarring when it changes..
-  //document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+    var years_json={};
+    var months_json={};
+    var days_json={};
+    var timemap_str = "<%=encodedGraph%>"
+    var years_list = timemap_str.split("_");
 
-  var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
-  document.getElementById('wm-graph-anchor').href = url;
+    for (var i=2;i<years_list.length;i++) {
 
-  //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
-  if (curYear != year) {
-    var yrOff = year * yearImgWidth;
-    document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
-    curYear = year;
-  }
-  if (curMonth != month) {
-    var mtOff = year + (month * monthImgWidth) + 1;
-    document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
-    curMonth = month;
-  }
-}
+      var year_record = years_list[i].split(":");
+      var year = year_record[0];
+      var year_digits = year_record[2];
+
+      var detailed_month_json={};
+      var sum_month_json={};
+      var sum_year=0;
+
+      var last_index = 0;
+      for (var month=1;month<=12;month++) {
+        no_of_days = daysInMonth(month,parseInt(year));
+        month_digit = year_digits.substring(last_index,last_index+no_of_days);
+        last_index=last_index+no_of_days;
+
+        var month_sum = sumDigitString(month_digit);
+        sum_year = sum_year+month_sum;
+        detailed_month_json[month]=month_digit;
+        sum_month_json[month]=month_sum;
+      }
+      days_json[year] = detailed_month_json;
+      months_json[year] = sum_month_json;
+      years_json[year] = sum_year;
+    }
+
+    var freq_class;
+    var months = [ "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December" ];
+
+    // Create cells for the YEARS visualization when the document is loaded.
+    $.each(years_json, function(key, value) {
+      determineFrequencyClass(value);
+      //console.log(key + ": " + value + " = " + freq_class);
+      if (freq_class.indexOf("captures")>=0) {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-key="' + key + '" data-original-title="' + key + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+      } else {
+        var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+      }
+      $("#su-wayback-m-year-data").append(cell);
+      $("[data-toggle='tooltip']").tooltip();
+    });
+
+    // When a year is clicked, create cells for the MONTHS visualization.
+    $(document).on('click', '#su-wayback-m-year-data td.su-wayback-m-captures', function () {
+      $("#su-wayback-m-year-data td > div").css("opacity", "0");
+      $(this).find("div").css("opacity", "1");
+      $(".su-toolbar-viz-message").css("display", "none");
+      $(".su-wayback-m-month-display").css("display", "block");
+      $(".su-wayback-m-day-display .su-wayback-m-day-label").css("display", "none");
+      $(".su-wayback-m-day-display .su-wayback-m-day-heading").css("display", "none");
+      $(".su-wayback-m-month-display .su-wayback-m-month-label").css("display", "inline-block");
+      $(".su-wayback-m-month-display .su-wayback-m-month-heading").css("display", "table-cell");
+      $("#su-wayback-m-month-data").empty();
+      $("#su-wayback-m-day-data").empty();
+      target_year = $(this).data("key");
+      $.each(months_json[target_year], function(key, value) {
+        determineFrequencyClass(value);
+        month_label = getMonthLabel(key);
+        // console.log("key: " +key + ", value: " + value + " month label: " + month_label);
+        if (freq_class.indexOf("captures")>=0) {
+          // console.log("cell has: " + freq_class);
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-year="' + target_year + '" data-key="' + key + '" data-original-title="' +  month_label + " " + target_year + ': ' + value +  ' captures" title=""><div style="opacity: 0;">&nbsp;</div></td>');
+        } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '""><div style="opacity: 0;">&nbsp;</div></td>');
+        }
+        $("#su-wayback-m-month-data").append(cell);
+        $("[data-toggle='tooltip']").tooltip();
+      });
+    });
+
+    // When a month is clicked, create cells for the DAYS visualization.
+    $(document).on('click', '#su-wayback-m-month-data td.su-wayback-m-captures', function () {
+      $("#su-wayback-m-month-data td > div").css("opacity", "0");
+      $(this).find("div").css("opacity", "1");
+      $(".su-wayback-m-day-display").css("display", "block");
+      $(".su-wayback-m-day-display .su-wayback-m-day-label").css("display", "inline-block");
+      $(".su-wayback-m-day-display .su-wayback-m-day-heading").css("display", "table-cell");
+      $("#su-wayback-m-day-data").empty();
+      target_year = $(this).data("year");
+      target_month = $(this).data("key");
+      month_label = getMonthLabel(target_month);
+      month_data = days_json[target_year][target_month];
+      for (var i = 0; i < month_data.length; i++) {
+        var day_value = month_data.substring(i, i+1);
+        // convert day value to int from string
+        determineFrequencyClass(parseInt(day_value, 10));
+        var day_label = i + 1; // adjust for zero-based index; days start with 1
+        var day_2_digits_label = ("0"+day_label).slice(-2);
+        var month_2_digits_label = ("0"+target_month).slice(-2);
+        if (freq_class.indexOf("captures")>=0) {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '" data-toggle="tooltip" data-placement="top" data-container="body" data-original-title="' + month_label + " " + day_label + ", " + target_year + ': ' + day_value +  ' captures" title=""><a href="<%= replayPrefix %>'+target_year+month_2_digits_label+day_2_digits_label+'120000/'+'<%=searchUrlSafe%>" style="z-index: 100001;"><div style="opacity: 0;">&nbsp;</div></a></td>');
+        } else {
+          var cell = $('<td class="su-wayback-m-frequency ' + freq_class + '"><div style="opacity: 0;">&nbsp;</div></td>');
+        }
+        $("#su-wayback-m-day-data").append(cell);
+        $("[data-toggle='tooltip']").tooltip();
+      }
+    });
+
+    function determineFrequencyClass(freq) {
+      if (freq == 1) {
+        freq_class = "su-wayback-m-low su-wayback-m-captures";
+      } else if ((freq > 1) && (freq <= 3 )) {
+        freq_class = "su-wayback-m-low-medium su-wayback-m-captures";
+      } else if ((freq > 3) && (freq <= 5 )) {
+        freq_class = "su-wayback-m-medium su-wayback-m-captures";
+      } else if ((freq > 5) && (freq <= 7 )) {
+        freq_class = "su-wayback-m-medium-high su-wayback-m-captures";
+      } else if (freq > 7) {
+        freq_class = "su-wayback-m-high su-wayback-m-captures";
+      } else {
+        freq_class = "";
+      }
+
+      return freq_class;
+    }
+
+    function getMonthLabel(month_value) {
+      month_label = months[month_value - 1];
+      return month_label;
+    }
+
+  });
 </script>
 
-<style type="text/css">body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7219229-29', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<style type="text/css"></style>
 
 <div id="wm-ipp" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px; z-index:9000;">
   <div id="wm-ipp-inside" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(<%= staticPrefix %>images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
@@ -615,6 +692,7 @@ function trackMouseMove(event,element) {
     </table>
   </div>
 </div>
+
 <script type="text/javascript">
   var wmDisclaimBanner = document.getElementById("wm-ipp");
   if (wmDisclaimBanner != null) {
