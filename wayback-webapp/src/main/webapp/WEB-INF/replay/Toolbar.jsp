@@ -66,6 +66,271 @@ String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() + 
 %>
 <!-- BEGIN WAYBACK TOOLBAR INSERT -->
 
+<style type="text/css">
+  body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    min-width: 800px !important;
+  }
+  #wm-ipp a:hover {
+    text-decoration: underline !important;
+  }
+  #wm-ipp div,
+  #wm-ipp span,
+  #wm-ipp h2,
+  #wm-ipp a,
+  #wm-ipp img,
+  #wm-ipp form,
+  #wm-ipp table,
+  #wm-ipp caption,
+  #wm-ipp tbody,
+  #wm-ipp tfoot,
+  #wm-ipp thead,
+  #wm-ipp tr,
+  #wm-ipp td,
+  #wm-ipp th {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  #wm-ipp table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: initial;
+  }
+  #wm-ipp input[type='text'] {
+    border: 2px inset;
+    padding: 1px;
+  }
+
+  .su-wayback-m-tooltip {
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    visibility: visible;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  .su-wayback-m-tooltip.in {
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+  }
+  .su-wayback-m-tooltip.top {
+    margin-top: -3px;
+    padding: 5px 0;
+  }
+  .su-wayback-m-tooltip.right {
+    margin-left: 3px;
+    padding: 0 5px;
+  }
+  .su-wayback-m-tooltip.bottom {
+    margin-top: 3px;
+    padding: 5px 0;
+  }
+  .su-wayback-m-tooltip.left {
+    margin-left: -3px;
+    padding: 0 5px;
+  }
+  .su-wayback-m-tooltip-inner {
+    max-width: 200px;
+    padding: 3px 8px;
+    color: #f7f7f7;
+    text-align: center;
+    text-decoration: none;
+    background-color: #990000;
+    border-radius: 4px;
+  }
+  .su-wayback-m-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+  .su-wayback-m-tooltip.top .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.top-left .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    left: 5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.top-right .su-wayback-m-tooltip-arrow {
+    bottom: 0;
+    right: 5px;
+    border-width: 5px 5px 0;
+    border-top-color: #990000;
+  }
+  .su-wayback-m-tooltip.right .su-wayback-m-tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    border-right-color: #990000;
+  }
+  .su-wayback-m-tooltip.left .su-wayback-m-tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom .su-wayback-m-tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom-left .su-wayback-m-tooltip-arrow {
+    top: 0;
+    left: 5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip.bottom-right .su-wayback-m-tooltip-arrow {
+    top: 0;
+    right: 5px;
+    border-width: 0 5px 5px;
+    border-bottom-color: #990000;
+  }
+  .su-wayback-m-tooltip {
+    font-size: 13px;
+    z-index: 100000;
+  }
+  .su-wayback-m-tooltip-inner {
+    font-size: 11px;
+    line-height: 1.4;
+    background-color: #990000;
+    border: 1px solid #000; border: 0;
+    color: #f7f7f7;
+    -moz-box-shadow: 2px 5px 10px 2px #999;
+    -webkit-box-shadow: 2px 5px 10px 2px #999;
+    box-shadow: 2px 5px 10px 2px #999;
+  }
+  .su-wayback-m-tooltip.in {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  .su-wayback-m-tooltip.left {
+    margin-left: -12px;
+  }
+  @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700);
+  #wm-ipp .su-wayback-m-years,
+  #wm-ipp .su-wayback-m-months,
+  #wm-ipp .su-wayback-m-days  {
+    border-collapse:collapse;
+    border-spacing:0;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  #wm-ipp .su-wayback-m-years td,
+  #wm-ipp .su-wayback-m-months td,
+  #wm-ipp .su-wayback-m-days td {
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    padding: 5px;
+    border:1px solid #bbb;
+    overflow:hidden;
+    word-break:normal;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  #wm-ipp .su-wayback-m-years td > div,
+  #wm-ipp .su-wayback-m-months td > div,
+  #wm-ipp .su-wayback-m-days td > div {
+    background: #555;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+  }
+  #wm-ipp .su-wayback-m-years .su-wayback-m-year-heading,
+  #wm-ipp .su-wayback-m-months .su-wayback-m-month-heading,
+  #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
+    border:0;
+    font-weight: bold;
+    color: #9b9b9b;
+    text-align: left;
+    font-size: 11px;
+    padding: 0 0 3px;
+    letter-spacing: 0;
+  }
+  #wm-ipp .su-wayback-m-days .su-wayback-m-day-heading {
+    padding-left: 3px;
+  }
+  #wm-ipp .su-wayback-m-year-label,
+  #wm-ipp .su-wayback-m-month-label,
+  #wm-ipp .su-wayback-m-day-label  {
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: right;
+    margin-right: 10px;
+    color: #999;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 50px;
+  }
+  #wm-ipp .su-wayback-m-years .su-wayback-m-frequency,
+  #wm-ipp .su-wayback-m-months .su-wayback-m-frequency,
+  #wm-ipp .su-wayback-m-days .su-wayback-m-frequency {
+    height: 24px;
+    width: 24px;
+    background-color: #f7f7f7;
+  }
+
+  #wm-ipp .su-wayback-m-year-display {margin: 10px 10px 20px 10px;}
+  #wm-ipp .su-wayback-m-month-display {margin: 10px 10px 20px 10px;}
+  #wm-ipp .su-wayback-m-day-display {margin: 10px 10px 25px 10px;}
+
+  .su-wayback-m-month-display, .su-wayback-m-day-display {display: none;}
+
+  .su-wayback-m-month-heading, .su-wayback-m-month-label,
+  .su-wayback-m-day-heading, .su-wayback-m-day-label {
+    display: none;
+  }
+  #wm-ipp .su-wayback-m-months .su-wayback-m-month-heading {
+    padding-left: 3px;
+  }
+  #wm-ipp .su-wayback-m-month-heading.dec, .su-wayback-m-day-heading.thirty {text-align: right;}
+
+  #wm-ipp .su-wayback-m-days .su-wayback-m-frequency {
+    padding: 0;
+  }
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-low {
+    background-color: #fee391;
+  }
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-low-medium {
+    background-color: #fec44f;
+  }
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-medium {
+    background-color: #fe9929;
+    color: #f7f7f7;
+  }
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-medium-high {
+    background-color: #d95f0e;
+    color: #f7f7f7;
+  }
+  #wm-ipp .su-wayback-m-frequency.su-wayback-m-high {
+    background-color: #993404;
+    color: #f7f7f7;
+  }
+</style>
+
 <!-- TODO: We should be able to remove js/disclaim-element.js
            but without it the overlay doesn't show.
            Probably related to JS code at very bottom of this page. -->
