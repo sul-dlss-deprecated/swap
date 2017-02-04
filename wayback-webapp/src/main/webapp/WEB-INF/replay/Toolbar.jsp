@@ -14,7 +14,7 @@
 <%@ page import="org.archive.wayback.partition.CaptureSearchResultPartitionMap" %>
 <%@ page import="org.archive.wayback.partition.PartitionPartitionMap" %>
 <%@ page import="org.archive.wayback.partition.PartitionsToGraph" %>
-<%@ page import="org.archive.wayback.partition.ToolBarData" %>
+<%@ page import="org.archive.wayback.partition.InteractiveToolBarData" %>
 <%@ page import="org.archive.wayback.util.graph.Graph" %>
 <%@ page import="org.archive.wayback.util.graph.GraphEncoder" %>
 <%@ page import="org.archive.wayback.util.graph.GraphRenderer" %>
@@ -23,6 +23,8 @@
 <%@ page import="org.archive.wayback.util.partition.PartitionSize" %>
 <%@ page import="org.archive.wayback.util.StringFormatter" %>
 <%@ page import="org.archive.wayback.util.url.UrlOperations" %>
+
+<jsp:include page="/WEB-INF/template/CookieJS.jsp" flush="true" />
 
 <%
 UIResults results = UIResults.extractReplay(request);
@@ -38,7 +40,7 @@ String graphJspPrefix = results.getContextConfig("graphJspPrefix");
 if (graphJspPrefix == null) {
   graphJspPrefix = queryPrefix;
 }
-ToolBarData data = new ToolBarData(results);
+InteractiveToolBarData data = new InteractiveToolBarData(results);
 
 String searchUrl = UrlOperations.stripDefaultPortFromUrl(wbRequest.getRequestUrl());
 String searchUrlSafe = fmt.escapeHtml(searchUrl);
@@ -58,15 +60,22 @@ for (int year = 1991; year <= Calendar.getInstance().get(Calendar.YEAR); year++)
 String yearFormatKey = "PartitionSize.dateHeader.yearGraphLabel";
 String encodedGraph = data.computeGraphString(yearFormatKey,imgWidth,imgHeight);
 String graphImgUrl = graphJspPrefix + "jsp/graph.jsp?graphdata=" + encodedGraph;
+System.out.println(encodedGraph);
 // TODO: this is archivalUrl specific:
 String starLink = fmt.escapeHtml(queryPrefix + wbRequest.getReplayTimestamp() + "*/" + searchUrl);
 %>
 <!-- BEGIN WAYBACK TOOLBAR INSERT -->
 
+<!-- TODO: We should be able to remove js/disclaim-element.js
+           but without it the overlay doesn't show.
+           Probably related to JS code at very bottom of this page. -->
 <script type="text/javascript" src="<%= staticPrefix %>js/disclaim-element.js" ></script>
-<script type="text/javascript" src="<%= staticPrefix %>js/graph-calc.js" ></script>
-<script type="text/javascript" src="<%= staticPrefix %>jflot/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+
+<script type="text/javascript" src="<%= staticPrefix %>js/su-wayback-m-bootstrap-tooltip.js" ></script>
+
 <script type="text/javascript">
+
 var firstDate = <%= firstYearDate.getTime() %>;
 var lastDate = <%= lastYearDate.getTime() %>;
 var wbPrefix = "<%= replayPrefix %>";
