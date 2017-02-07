@@ -19,69 +19,63 @@ import org.archive.wayback.util.partition.Partitioner;
 * effort to integrate Stanford version with existing core code.
 */
 public class InteractiveToolBarData extends ToolBarData {
-	
-	private static final PartitionSize daySize = Partitioner.daySize;
 
-	private static final CaptureSearchResultPartitionMap dayMap = 
-			new CaptureSearchResultPartitionMap();
-	private static final Partitioner<CaptureSearchResult> dayPartitioner = 
-			new Partitioner<CaptureSearchResult>(dayMap);
-	
-	public List<Partition<CaptureSearchResult>> dayPartitions;
+  private static final PartitionSize daySize = Partitioner.daySize;
 
-	public String firstResultReplayUrl;
-	public String lastResultReplayUrl;
-	
-	public InteractiveToolBarData(UIResults uiResults) {
-		//super(uiResults);
-		this.uiResults = uiResults;
-		fmt = uiResults.getWbRequest().getFormatter();
-		results = uiResults.getCaptureResults();
-		curResult = uiResults.getResult();
-		findRelativeLinks();
+  private static final CaptureSearchResultPartitionMap dayMap = new CaptureSearchResultPartitionMap();
+  private static final Partitioner<CaptureSearchResult> dayPartitioner = new Partitioner<CaptureSearchResult>(dayMap);
 
-		Date firstDate = uiResults.getWbRequest().getStartDate();
-		Date lastDate = uiResults.getWbRequest().getEndDate();
-		yearPartitions = yearPartitioner.getRange(yearSize,firstDate,lastDate);
-	
-		Date firstYearDate = yearPartitions.get(0).getStart();
-		Date lastYearDate = yearPartitions.get(yearPartitions.size()-1).getEnd();
-		dayPartitions =
-				dayPartitioner.getRange(daySize,firstYearDate,lastYearDate);
-		
-		Iterator<CaptureSearchResult> it = results.iterator();
-		
-		firstResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getFirst()));
-		lastResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getLast()));
-		
-		dayPartitioner.populate(dayPartitions,it);
-		yearPartitioner.populate(yearPartitions,dayPartitions.iterator());
-	}
-	
-	/**
-	 * @param formatKey String template for format Dates
-	 * @param width pixel width of resulting graph
-	 * @param height pixel height of resulting graph
-	 * @return String argument which will generate a graph for the results
-	 */
-	public String computeGraphString(String formatKey, int width, int height) {
-		Graph graph = PartitionsToGraph.partsOfPartsToGraph(yearPartitions,
-				fmt,formatKey,width,height);
-		
-		RegionGraphElement rge[] = graph.getRegions();
-		RegionData data[] = new RegionData[rge.length];
-		for(int i = 0; i < data.length; i++) {
-			data[i] = rge[i].getData();
-			
-			for(int j=0; j<data[i].getValues().length;j++){
-			//	System.out.print(data[i].getValues()[j]+"");
-			}
-			
-			//System.out.println();
-		}
-		
-		return GraphEncoder.encode(graph);
+  public List<Partition<CaptureSearchResult>> dayPartitions;
 
-	}
-	
+  public String firstResultReplayUrl;
+  public String lastResultReplayUrl;
+
+  public InteractiveToolBarData(UIResults uiResults) {
+    //super(uiResults);
+    this.uiResults = uiResults;
+    fmt = uiResults.getWbRequest().getFormatter();
+    results = uiResults.getCaptureResults();
+    curResult = uiResults.getResult();
+    findRelativeLinks();
+
+    Date firstDate = uiResults.getWbRequest().getStartDate();
+    Date lastDate = uiResults.getWbRequest().getEndDate();
+    yearPartitions = yearPartitioner.getRange(yearSize, firstDate, lastDate);
+
+    Date firstYearDate = yearPartitions.get(0).getStart();
+    Date lastYearDate = yearPartitions.get(yearPartitions.size()-1).getEnd();
+    dayPartitions = dayPartitioner.getRange(daySize, firstYearDate, lastYearDate);
+
+    Iterator<CaptureSearchResult> it = results.iterator();
+
+    firstResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getFirst()));
+    lastResultReplayUrl = fmt.escapeHtml(uiResults.resultToReplayUrl(results.getResults().getLast()));
+
+    dayPartitioner.populate(dayPartitions, it);
+    yearPartitioner.populate(yearPartitions, dayPartitions.iterator());
+  }
+
+  /**
+   * @param formatKey String template for format Dates
+   * @param width pixel width of resulting graph
+   * @param height pixel height of resulting graph
+   * @return String argument which will generate a graph for the results
+   */
+  public String computeGraphString(String formatKey, int width, int height) {
+    Graph graph = PartitionsToGraph.partsOfPartsToGraph(yearPartitions, fmt, formatKey, width,height);
+
+    RegionGraphElement rge[] = graph.getRegions();
+    RegionData data[] = new RegionData[rge.length];
+    for (int i = 0; i < data.length; i++) {
+      data[i] = rge[i].getData();
+
+      for (int j=0; j<data[i].getValues().length;j++) {
+        //System.out.print(data[i].getValues()[j]+"");
+      }
+      //System.out.println();
+    }
+
+    return GraphEncoder.encode(graph);
+  }
+
 }
