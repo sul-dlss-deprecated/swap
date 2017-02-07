@@ -31,11 +31,10 @@ public class InteractiveToolBarData extends ToolBarData {
   public String lastResultReplayUrl;
 
   public InteractiveToolBarData(UIResults uiResults) {
-    //super(uiResults);
     this.uiResults = uiResults;
     fmt = uiResults.getWbRequest().getFormatter();
     results = uiResults.getCaptureResults();
-    curResult = uiResults.getResult();
+    // curResult = uiResults.getResult();
     findRelativeLinks();
 
     Date firstDate = uiResults.getWbRequest().getStartDate();
@@ -68,11 +67,6 @@ public class InteractiveToolBarData extends ToolBarData {
     RegionData data[] = new RegionData[rge.length];
     for (int i = 0; i < data.length; i++) {
       data[i] = rge[i].getData();
-
-      for (int j=0; j<data[i].getValues().length;j++) {
-        //System.out.print(data[i].getValues()[j]+"");
-      }
-      //System.out.println();
     }
 
     return GraphEncoder.encode(graph);
