@@ -2,8 +2,8 @@
  *  This file is part of the Wayback archival access software
  *   (http://archive-access.sourceforge.net/projects/wayback/).
  *
- *  Licensed to the Internet Archive (IA) by one or more individual 
- *  contributors. 
+ *  Licensed to the Internet Archive (IA) by one or more individual
+ *  contributors.
  *
  *  The IA licenses this file to You under the Apache License, Version 2.0
  *  (the "License"); you may not use this file except in compliance with
@@ -54,220 +54,219 @@ import org.htmlparser.lexer.Page;
 import org.htmlparser.util.ParserException;
 
 /**
- * ReplayRenderer which attempts to rewrite text/html documents so URLs 
+ * ReplayRenderer which attempts to rewrite text/html documents so URLs
  * references within the document load from the correct ArchivalURL AccessPoint.
- * 
+ *
  * @author brad
  *
  */
 public class ArchivalUrlSAXRewriteReplayRenderer implements ReplayRenderer {
-	private ParseEventHandler delegator = null;
-	private HttpHeaderProcessor httpHeaderProcessor;
-	private CharsetDetector charsetDetector = new StandardCharsetDetector();
-	private ContextResultURIConverterFactory converterFactory = null;
-	private boolean rewriteHttpsOnly;
-	
-	private final static String OUTPUT_CHARSET = "utf-8";
-	private static int FRAMESET_SCAN_BUFFER_SIZE = 16 * 1024;
-	private static ReplayRenderer frameWrappingRenderer = null;
-	public static ReplayRenderer getFrameWrappingRenderer() {
-		return frameWrappingRenderer;
-	}
+  private ParseEventHandler delegator = null;
+  private HttpHeaderProcessor httpHeaderProcessor;
+  private CharsetDetector charsetDetector = new StandardCharsetDetector();
+  private ContextResultURIConverterFactory converterFactory = null;
+  private boolean rewriteHttpsOnly;
 
-	public static void setFrameWrappingRenderer(ReplayRenderer frameWrappingRenderer) {
-		ArchivalUrlSAXRewriteReplayRenderer.frameWrappingRenderer = frameWrappingRenderer;
-	}
+  private final static String OUTPUT_CHARSET = "utf-8";
+  private static int FRAMESET_SCAN_BUFFER_SIZE = 16 * 1024;
+  private static ReplayRenderer frameWrappingRenderer = null;
+  public static ReplayRenderer getFrameWrappingRenderer() {
+    return frameWrappingRenderer;
+  }
 
-	/**
-	 * @param httpHeaderProcessor which should process HTTP headers
-	 */
-	public ArchivalUrlSAXRewriteReplayRenderer(HttpHeaderProcessor httpHeaderProcessor) {
-		this.httpHeaderProcessor = httpHeaderProcessor;
-	}
+  public static void setFrameWrappingRenderer(ReplayRenderer frameWrappingRenderer) {
+    ArchivalUrlSAXRewriteReplayRenderer.frameWrappingRenderer = frameWrappingRenderer;
+  }
 
-	// assume this is only called for appropriate doc types: html
-	public void renderResource(HttpServletRequest httpRequest,
-			HttpServletResponse httpResponse, WaybackRequest wbRequest,
-			CaptureSearchResult result, Resource resource,
-			ResultURIConverter uriConverter, CaptureSearchResults results)
-					throws ServletException, IOException, WaybackException {
-		renderResource(httpRequest, httpResponse, wbRequest, result, resource,
-				resource, uriConverter, results);
-	}
+  /**
+   * @param httpHeaderProcessor which should process HTTP headers
+   */
+  public ArchivalUrlSAXRewriteReplayRenderer(HttpHeaderProcessor httpHeaderProcessor) {
+    this.httpHeaderProcessor = httpHeaderProcessor;
+  }
 
-	@Override
-	public void renderResource(HttpServletRequest httpRequest,
-			HttpServletResponse httpResponse, WaybackRequest wbRequest,
-			CaptureSearchResult result, Resource httpHeadersResource,
-			Resource payloadResource, ResultURIConverter uriConverter,
-			CaptureSearchResults results) throws ServletException, IOException,
-			WaybackException {
+  // assume this is only called for appropriate doc types: html
+  public void renderResource(HttpServletRequest httpRequest,
+    HttpServletResponse httpResponse, WaybackRequest wbRequest,
+    CaptureSearchResult result, Resource resource,
+    ResultURIConverter uriConverter, CaptureSearchResults results)
+    throws ServletException, IOException, WaybackException {
+    renderResource(httpRequest, httpResponse, wbRequest, result, resource,
+    resource, uriConverter, results);
+  }
 
-		Resource decodedResource = TextReplayRenderer.decodeResource(httpHeadersResource, payloadResource);
+  @Override
+  public void renderResource(HttpServletRequest httpRequest,
+                              HttpServletResponse httpResponse,
+                              WaybackRequest wbRequest,
+                              CaptureSearchResult result,
+                              Resource httpHeadersResource,
+                              Resource payloadResource,
+                              ResultURIConverter uriConverter,
+                              CaptureSearchResults results)
+              throws ServletException, IOException, WaybackException {
 
-		// The URL of the page, for resolving in-page relative URLs: 
-		URL url = null;
-		try {
-			url = new URL(result.getOriginalUrl());
-		} catch (MalformedURLException e1) {
-			// TODO: this shouldn't happen...
-			e1.printStackTrace();
-			throw new IOException(e1.getMessage());
-		}
-		// determine the character set used to encode the document bytes:
-		String charSet = charsetDetector.getCharset(httpHeadersResource, decodedResource, wbRequest);
+    Resource decodedResource = TextReplayRenderer.decodeResource(httpHeadersResource, payloadResource);
 
-		ContextResultURIConverterFactory fact = createConverterFactory(uriConverter, httpRequest, wbRequest);
-		
-		// set up the context:
-		ReplayParseContext context = 
-				new ReplayParseContext(fact,url,result.getCaptureTimestamp());
-		
-		context.setRewriteHttpsOnly(rewriteHttpsOnly);
+    // The URL of the page, for resolving in-page relative URLs:
+    URL url = null;
+    try {
+      url = new URL(result.getOriginalUrl());
+    } catch (MalformedURLException e1) {
+      // TODO: this shouldn't happen...
+      e1.printStackTrace();
+      throw new IOException(e1.getMessage());
+    }
+    // determine the character set used to encode the document bytes:
+    String charSet = charsetDetector.getCharset(httpHeadersResource, decodedResource, wbRequest);
 
-		if(!wbRequest.isFrameWrapperContext()) {
-			// in case this is an HTML page with FRAMEs, peek ahead an look:
-			// TODO: make ThreadLocal:
-			byte buffer[] = new byte[FRAMESET_SCAN_BUFFER_SIZE];
+    ContextResultURIConverterFactory fact = createConverterFactory(uriConverter, httpRequest, wbRequest);
 
-			decodedResource.mark(FRAMESET_SCAN_BUFFER_SIZE);
-			int amtRead = decodedResource.read(buffer);
-			decodedResource.reset();
+    // set up the context:
+    ReplayParseContext context =
+    new ReplayParseContext(fact,url,result.getCaptureTimestamp());
 
-			if(amtRead > 0) {
-				StringBuilder foo = new StringBuilder(new String(buffer,charSet));
-				int frameIdx = TagMagix.getEndOfFirstTag(foo, "FRAMESET");
-				if(frameIdx != -1) {
-					// insert flag so we don't add FRAMESET:
-					context.putData(FastArchivalUrlReplayParseEventHandler.FERRET_DONE_KEY,"");
+    context.setRewriteHttpsOnly(rewriteHttpsOnly);
 
-//					// top-level Frameset: Draw the frame wrapper thingy:
-//					frameWrappingRenderer.renderResource(httpRequest, 
-//							httpResponse, wbRequest, result, resource, 
-//							uriConverter, results);
-//					return;
-				}
-			}
-		}
+    if (!wbRequest.isFrameWrapperContext()) {
+      // in case this is an HTML page with FRAMEs, peek ahead an look:
+      // TODO: make ThreadLocal:
+      byte buffer[] = new byte[FRAMESET_SCAN_BUFFER_SIZE];
 
+      decodedResource.mark(FRAMESET_SCAN_BUFFER_SIZE);
+      int amtRead = decodedResource.read(buffer);
+      decodedResource.reset();
 
-		// copy the HTTP response code:
-		HttpHeaderOperation.copyHTTPMessageHeader(httpHeadersResource, httpResponse);
+      if (amtRead > 0) {
+        StringBuilder foo = new StringBuilder(new String(buffer,charSet));
+        int frameIdx = TagMagix.getEndOfFirstTag(foo, "FRAMESET");
 
-		// transform the original headers according to our headerProcessor:
-		Map<String,String> headers = HttpHeaderOperation.processHeaders(
-				httpHeadersResource, result, uriConverter, httpHeaderProcessor);
+        if (frameIdx != -1) {
+          // insert flag so we don't add FRAMESET:
+          context.putData(FastArchivalUrlReplayParseEventHandler.FERRET_DONE_KEY,"");
 
-		// prepare several objects for the parse:
+          // top-level Frameset: Draw the frame wrapper thingy:
+          // frameWrappingRenderer.renderResource(httpRequest, httpResponse, wbRequest, result, resource, uriConverter, results);
+          // return;
+        }
+      }
+    }
 
-		// a JSPExecutor:
-		JSPExecutor jspExec = new JSPExecutor(uriConverter, httpRequest, 
-				httpResponse, wbRequest, results, result, decodedResource);
+    // copy the HTTP response code:
+    HttpHeaderOperation.copyHTTPMessageHeader(httpHeadersResource, httpResponse);
 
+    // transform the original headers according to our headerProcessor:
+    Map<String,String> headers = HttpHeaderOperation.processHeaders(
+    httpHeadersResource, result, uriConverter, httpHeaderProcessor);
 
-		// To make sure we get the length, we have to buffer it all up...
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    // prepare several objects for the parse:
 
-		context.setOutputCharset(OUTPUT_CHARSET);
-		context.setOutputStream(baos);
-		context.setJspExec(jspExec);
+    // a JSPExecutor:
+    JSPExecutor jspExec = new JSPExecutor(uriConverter, httpRequest,
+    httpResponse, wbRequest, results, result, decodedResource);
 
+    // To make sure we get the length, we have to buffer it all up...
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		// and finally, parse, using the special lexer that knows how to
-		// handle javascript blocks containing unescaped HTML entities:
-		Page lexPage = new Page(decodedResource,charSet);
-		Lexer lexer = new Lexer(lexPage);
-		Lexer.STRICT_REMARKS = false;
-		ContextAwareLexer lex = new ContextAwareLexer(lexer, context);
-		Node node;
-		try {
-			delegator.handleParseStart(context);
-			while((node = lex.nextNode()) != null) {
-				delegator.handleNode(context, node);
-			}
-			delegator.handleParseComplete(context);
-		} catch (ParserException e) {
-			e.printStackTrace();
-			throw new IOException(e.getMessage());
-		}
+    context.setOutputCharset(OUTPUT_CHARSET);
+    context.setOutputStream(baos);
+    context.setJspExec(jspExec);
 
-		// At this point, baos contains the utf-8 encoded bytes of our result:
-		byte[] utf8Bytes = baos.toByteArray();
-		// set the corrected length:
-		headers.put(HttpHeaderOperation.HTTP_LENGTH_HEADER, 
-				String.valueOf(utf8Bytes.length));
-		headers.put(TextReplayRenderer.GUESSED_CHARSET_HEADER, charSet);
+    // and finally, parse, using the special lexer that knows how to
+    // handle javascript blocks containing unescaped HTML entities:
+    Page lexPage = new Page(decodedResource,charSet);
+    Lexer lexer = new Lexer(lexPage);
+    Lexer.STRICT_REMARKS = false;
+    ContextAwareLexer lex = new ContextAwareLexer(lexer, context);
+    Node node;
+    try {
+      delegator.handleParseStart(context);
+      while((node = lex.nextNode()) != null) {
+        delegator.handleNode(context, node);
+      }
+      delegator.handleParseComplete(context);
+    } catch (ParserException e) {
+      e.printStackTrace();
+      throw new IOException(e.getMessage());
+    }
 
-		// send back the headers:
-		HttpHeaderOperation.sendHeaders(headers, httpResponse);
-		// Tomcat will always send a charset... It's trying to be smarter than
-		// we are. If the original page didn't include a "charset" as part of
-		// the "Content-Type" HTTP header, then Tomcat will use the default..
-		// who knows what that is, or what that will do to the page..
-		// let's try explicitly setting it to what we used:
-		httpResponse.setCharacterEncoding(OUTPUT_CHARSET);
-		httpResponse.getOutputStream().write(utf8Bytes);
-	}
-	
-	protected ContextResultURIConverterFactory createConverterFactory(ResultURIConverter uriConverter, HttpServletRequest httpRequest, WaybackRequest wbRequest)
-	{
-		// sam ecode in ArchivalURLJSStringTransformerReplayRenderer
-		ContextResultURIConverterFactory fact = null;
-		
-		if (uriConverter instanceof ArchivalUrlResultURIConverter) {
-			fact = new ArchivalUrlContextResultURIConverterFactory(
-					(ArchivalUrlResultURIConverter) uriConverter);
-		} else if (converterFactory != null) {
-			fact = converterFactory;
-		} else {
-			fact = new IdentityResultURIConverterFactory(uriConverter);			
-		}
-		
-		return fact;
-	}
+    // At this point, baos contains the utf-8 encoded bytes of our result:
+    byte[] utf8Bytes = baos.toByteArray();
+    // set the corrected length:
+    headers.put(HttpHeaderOperation.HTTP_LENGTH_HEADER,
+    String.valueOf(utf8Bytes.length));
+    headers.put(TextReplayRenderer.GUESSED_CHARSET_HEADER, charSet);
 
-	/**
-	 * @return the charsetDetector
-	 */
-	public CharsetDetector getCharsetDetector() {
-		return charsetDetector;
-	}
+    // send back the headers:
+    HttpHeaderOperation.sendHeaders(headers, httpResponse);
+    // Tomcat will always send a charset... It's trying to be smarter than
+    // we are. If the original page didn't include a "charset" as part of
+    // the "Content-Type" HTTP header, then Tomcat will use the default..
+    // who knows what that is, or what that will do to the page..
+    // let's try explicitly setting it to what we used:
+    httpResponse.setCharacterEncoding(OUTPUT_CHARSET);
+    httpResponse.getOutputStream().write(utf8Bytes);
+  }
 
-	/**
-	 * @param charsetDetector the charsetDetector to set
-	 */
-	public void setCharsetDetector(CharsetDetector charsetDetector) {
-		this.charsetDetector = charsetDetector;
-	}
+  protected ContextResultURIConverterFactory createConverterFactory(ResultURIConverter uriConverter,
+                                                                    HttpServletRequest httpRequest,
+                                                                    WaybackRequest wbRequest) {
+    // same code in ArchivalURLJSStringTransformerReplayRenderer
+    ContextResultURIConverterFactory fact = null;
 
-	/**
-	 * @return the delegator
-	 */
-	public ParseEventHandler getDelegator() {
-		return delegator;
-	}
+    if (uriConverter instanceof ArchivalUrlResultURIConverter) {
+      fact = new ArchivalUrlContextResultURIConverterFactory(
+      (ArchivalUrlResultURIConverter) uriConverter);
+    } else if (converterFactory != null) {
+      fact = converterFactory;
+    } else {
+      fact = new IdentityResultURIConverterFactory(uriConverter);
+    }
 
-	/**
-	 * @param delegator the delegator to set
-	 */
-	public void setDelegator(ParseEventHandler delegator) {
-		this.delegator = delegator;
-	}
+    return fact;
+  }
 
-	public ContextResultURIConverterFactory getConverterFactory() {
-		return converterFactory;
-	}
+  /**
+   * @return the charsetDetector
+   */
+  public CharsetDetector getCharsetDetector() {
+    return charsetDetector;
+  }
 
-	public void setConverterFactory(
-			ContextResultURIConverterFactory converterFactory) {
-		this.converterFactory = converterFactory;
-	}
+  /**
+   * @param charsetDetector the charsetDetector to set
+   */
+  public void setCharsetDetector(CharsetDetector charsetDetector) {
+    this.charsetDetector = charsetDetector;
+  }
 
-	public boolean isRewriteHttpsOnly() {
-		return rewriteHttpsOnly;
-	}
+  /**
+   * @return the delegator
+   */
+  public ParseEventHandler getDelegator() {
+    return delegator;
+  }
 
-	public void setRewriteHttpsOnly(boolean rewriteHttpsOnly) {
-		this.rewriteHttpsOnly = rewriteHttpsOnly;
-	}
+  /**
+   * @param delegator the delegator to set
+   */
+  public void setDelegator(ParseEventHandler delegator) {
+    this.delegator = delegator;
+  }
+
+  public ContextResultURIConverterFactory getConverterFactory() {
+    return converterFactory;
+  }
+
+  public void setConverterFactory(ContextResultURIConverterFactory converterFactory) {
+    this.converterFactory = converterFactory;
+  }
+
+  public boolean isRewriteHttpsOnly() {
+    return rewriteHttpsOnly;
+  }
+
+  public void setRewriteHttpsOnly(boolean rewriteHttpsOnly) {
+    this.rewriteHttpsOnly = rewriteHttpsOnly;
+  }
 }
