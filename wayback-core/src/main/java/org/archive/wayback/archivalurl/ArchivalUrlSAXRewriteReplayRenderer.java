@@ -197,6 +197,9 @@ public class ArchivalUrlSAXRewriteReplayRenderer implements ReplayRenderer {
     String.valueOf(utf8Bytes.length));
     headers.put(TextReplayRenderer.GUESSED_CHARSET_HEADER, charSet);
 
+    // Add X-UA-Compatible header for IE to render the page with latest standard
+    headers.put("X-UA-Compatible", "IE=edge");
+
     // send back the headers:
     HttpHeaderOperation.sendHeaders(headers, httpResponse);
     // Tomcat will always send a charset... It's trying to be smarter than
