@@ -40,8 +40,8 @@ import org.archive.wayback.util.partition.Partitioner;
  */
 public class ToolBarData {
 
-  private UIResults uiResults;
-  private StringFormatter fmt;
+  protected UIResults uiResults;
+  protected StringFormatter fmt;
 
   /** Latest Result one year before current, or null */
   public CaptureSearchResult yearPrevResult;
@@ -65,15 +65,15 @@ public class ToolBarData {
   /** List<Part<CResult>> for months*/
   public List<Partition<CaptureSearchResult>> monthPartitions;
 
-  private static final PartitionSize yearSize = Partitioner.yearSize;
-  private static final PartitionSize monthSize = Partitioner.monthSize;
+  protected static final PartitionSize yearSize = Partitioner.yearSize;
+  protected static final PartitionSize monthSize = Partitioner.monthSize;
 
-  private static final CaptureSearchResultPartitionMap monthMap = new CaptureSearchResultPartitionMap();
-  private static final PartitionPartitionMap yearMap = new PartitionPartitionMap();
+  protected static final CaptureSearchResultPartitionMap monthMap = new CaptureSearchResultPartitionMap();
+  protected static final PartitionPartitionMap yearMap = new PartitionPartitionMap();
 
-  private static final Partitioner<Partition<CaptureSearchResult>> yearPartitioner =
+  protected static final Partitioner<Partition<CaptureSearchResult>> yearPartitioner =
     new Partitioner<Partition<CaptureSearchResult>>(yearMap);
-  private static final Partitioner<CaptureSearchResult> monthPartitioner =
+  protected static final Partitioner<CaptureSearchResult> monthPartitioner =
     new Partitioner<CaptureSearchResult>(monthMap);
 
   /**
@@ -99,6 +99,12 @@ public class ToolBarData {
 
     monthPartitioner.populate(monthPartitions, it);
     yearPartitioner.populate(yearPartitions, monthPartitions.iterator());
+  }
+
+  /**
+   * Implicit constructor to keep the child class (InteractiveToolBarData) clean
+   */
+  protected ToolBarData() {
   }
 
   /**
@@ -178,7 +184,7 @@ public class ToolBarData {
     return addDateField(date, Calendar.DATE, amt);
   }
 
-  private void findRelativeLinks() {
+  protected void findRelativeLinks() {
     Date cur = curResult.getCaptureDate();
     Date minYear = addYear(cur, -1);
     Date minMonth = addMonth(cur, -1);
