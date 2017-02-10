@@ -1,0 +1,106 @@
+.gitignore
+.travis.yml
+A - CONTRIBUTING.md
+README.md
+contrib/ia/global-wayback/src/main/webapp/WEB-INF/ProxyRWReplay.xml
+dist/pom.xml
+pom.xml
+
+src/site/xdoc/administrator_manual.xml
+A - src/site/xdoc/downloads.xml
+A - src/site/xdoc/downloads.xml.vm
+src/site/xdoc/release_notes.xml
+
+wayback-cdx-server/pom.xml
+wayback-core/pom.xml
+
+A - wayback-core/src/main/java/edu/stanford/dlss/contact/EmailProcessor.java
+A - wayback-core/src/main/java/edu/stanford/dlss/contact/EmailServlet.java
+wayback-core/src/main/java/org/archive/wayback/UrlCanonicalizer.java
+wayback-core/src/main/java/org/archive/wayback/accesscontrol/robotstxt/Robotstxt.java
+wayback-core/src/main/java/org/archive/wayback/accesscontrol/staticmap/StaticListExclusionFilter.java
+wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrl.java
+wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlContextResultURIConverterFactory.java
+wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlSAXRewriteReplayRenderer.java
+wayback-core/src/main/java/org/archive/wayback/archivalurl/FastArchivalUrlReplayParseEventHandler.java
+wayback-core/src/main/java/org/archive/wayback/archivalurl/StandardAttributeRewriter.java
+wayback-core/src/main/java/org/archive/wayback/core/WaybackRequest.java
+wayback-core/src/main/java/org/archive/wayback/domainprefix/DomainPrefixCompositeRequestParser.java
+wayback-core/src/main/java/org/archive/wayback/exception/CustomNotInArchiveExceptionRenderer.java
+A - wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+wayback-core/src/main/java/org/archive/wayback/partition/PartitionsToGraph.java
+wayback-core/src/main/java/org/archive/wayback/partition/ToolBarData.java
+wayback-core/src/main/java/org/archive/wayback/replay/HttpHeaderOperation.java
+wayback-core/src/main/java/org/archive/wayback/replay/ReplayRendererDecorator.java
+wayback-core/src/main/java/org/archive/wayback/replay/StringHttpServletResponseWrapper.java
+wayback-core/src/main/java/org/archive/wayback/replay/TextDocument.java
+wayback-core/src/main/java/org/archive/wayback/replay/TextReplayRenderer.java
+wayback-core/src/main/java/org/archive/wayback/replay/charset/CharsetDetector.java
+wayback-core/src/main/java/org/archive/wayback/replay/html/ReplayParseContext.java
+wayback-core/src/main/java/org/archive/wayback/replay/html/rules/AttributeModifyingRule.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/SearchResultSource.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/cdx/CDXIndex.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/cdxserver/EmbeddedCDXServerIndex.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/AlphaPartitionedIndex.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/RangeGroup.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/RangeMember.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/filters/SchemeMatchFilter.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/ziplines/ZiplinedBlock.java
+wayback-core/src/main/java/org/archive/wayback/resourceindex/ziplines/ZiplinesSearchResultSource.java
+wayback-core/src/main/java/org/archive/wayback/resourcestore/indexer/IndexQueueUpdater.java
+wayback-core/src/main/java/org/archive/wayback/resourcestore/indexer/WarcIndexer.java
+wayback-core/src/main/java/org/archive/wayback/resourcestore/locationdb/FlatFileResourceFileLocationDB.java
+wayback-core/src/main/java/org/archive/wayback/util/StringFormatter.java
+wayback-core/src/main/java/org/archive/wayback/util/Timestamp.java
+wayback-core/src/main/java/org/archive/wayback/util/graph/GraphConfiguration.java
+wayback-core/src/main/java/org/archive/wayback/util/graph/RegionGraphElement.java
+wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElement.java
+wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElements.java
+wayback-core/src/main/java/org/archive/wayback/util/url/UrlOperations.java
+wayback-core/src/main/java/org/archive/wayback/webapp/AccessPoint.java
+wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlSAXRewriteReplayRendererTest.java
+wayback-core/src/test/java/org/archive/wayback/resourceindex/distributed/AlphaPartitionedIndexTest.java
+wayback-core/src/test/java/org/archive/wayback/util/TimestampTest.java
+
+wayback-webapp/pom.xml
+
+wayback-webapp/src/main/webapp/WEB-INF/CDXCollection.xml
+wayback-webapp/src/main/webapp/WEB-INF/exception/HTMLError.jsp
+wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+wayback-webapp/src/main/webapp/WEB-INF/query/CalendarResults.jsp
+wayback-webapp/src/main/webapp/WEB-INF/query/HTMLUrlResults.jsp
+wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+wayback-webapp/src/main/webapp/WEB-INF/replay/UrlRedirectNotice.jsp
+wayback-webapp/src/main/webapp/WEB-INF/template/CookieJS.jsp
+wayback-webapp/src/main/webapp/WEB-INF/template/UI-footer.jsp
+wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+wayback-webapp/src/main/webapp/advanced_search.jsp
+A - wayback-webapp/src/main/webapp/css/bootstrap.min.css
+wayback-webapp/src/main/webapp/css/styles.css
+A - wayback-webapp/src/main/webapp/css/su-wayback-toolbar.css
+A - wayback-webapp/src/main/webapp/css/su-wayback.css
+wayback-webapp/src/main/webapp/favicon.ico
+A - wayback-webapp/src/main/webapp/images/SUL-Logo-white-text-h25.png
+A - wayback-webapp/src/main/webapp/images/featured_sites/nytimes-2002.png
+A - wayback-webapp/src/main/webapp/images/featured_sites/slac_1991.jpg
+A - wayback-webapp/src/main/webapp/images/featured_sites/slac_1994.jpg
+A - wayback-webapp/src/main/webapp/images/featured_sites/slac_1996.jpg
+A - wayback-webapp/src/main/webapp/images/featured_sites/slac_1999.jpg
+A - wayback-webapp/src/main/webapp/images/featured_sites/stanford-2007.png
+A - wayback-webapp/src/main/webapp/images/featured_sites/stanford-arts-1997.png
+A - wayback-webapp/src/main/webapp/images/featured_sites/sul-2005.png
+A - wayback-webapp/src/main/webapp/images/logo_WM.gif
+wayback-webapp/src/main/webapp/images/logo_WM.png - DELETED
+A - wayback-webapp/src/main/webapp/images/toolbar/SUL-Logo-h25.png
+A - wayback-webapp/src/main/webapp/images/toolbar/SUL-Logo-white-text-h25.png
+A - wayback-webapp/src/main/webapp/images/toolbar/su-wayback-m-left-arrow.png
+A - wayback-webapp/src/main/webapp/images/toolbar/su-wayback-m-right-arrow.png
+A - wayback-webapp/src/main/webapp/images/toolbar/transp-white-pixel.png
+wayback-webapp/src/main/webapp/images/toolbar/wayback-toolbar-logo.png
+wayback-webapp/src/main/webapp/images/wayback_logo_sm.gif - DELETED
+wayback-webapp/src/main/webapp/images/wayback_logo_tr.gif - DELETED
+wayback-webapp/src/main/webapp/index.jsp
+A - wayback-webapp/src/main/webapp/js/bootstrap.min.js
+A - wayback-webapp/src/main/webapp/js/su-wayback-m-bootstrap-tooltip.js
+A - wayback-webapp/src/main/webapp/js/su-wayback.js
+A - wayback-webapp/src/main/webapp/jsp/Toolbar.jsp

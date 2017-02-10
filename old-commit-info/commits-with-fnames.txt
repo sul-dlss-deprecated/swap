@@ -1,0 +1,713 @@
+from:  git log --pretty="%H" 3885550...HEAD | while read commit_hash; do git show --pretty=format:'%h %ae -%d %s (%cd)' --abbrev-commit --date=iso --name-status $commit_hash; done
+where: 3885550 (2014-06-23 18:05:55 -0700) is a commit before first localization
+
+d46e199 ndushay@stanford.edu - (HEAD, origin/master, origin/HEAD, master) Merge pull request #26 from sul-dlss/multilevel-index (2017-01-24 13:48:16 -0800)
+d7765c9 tallenaz@users.noreply.github.com - (HEAD, origin/master, origin/HEAD, master) Merge pull request #27 from sul-dlss/readme-travis-etc (2017-01-23 16:45:55 -0800)
+70542c2 ndushay@stanford.edu - trying for jacoco and coveralls (2017-01-20 20:20:48 -0800)
+M	.travis.yml
+M	README.md
+M	pom.xml
+4ed66c9 ndushay@stanford.edu - pom.xml: reformat and change to sul-dlss instead of iipc (2017-01-20 20:20:47 -0800)
+M	pom.xml
+1d3171f ndushay@stanford.edu - README: update to reality (2017-01-20 20:20:47 -0800)
+M	README.md
+be52a15 ndushay@stanford.edu - travis first pass (2017-01-20 20:20:34 -0800)
+M	.travis.yml
+f2a4c0e drh@stanford.edu - (origin/multilevel-index) use multi-level indexes (2017-01-18 12:05:06 -0800)
+M       wayback-webapp/src/main/webapp/WEB-INF/CDXCollection.xml
+f5dd3a1 drh@stanford.edu - (tag: v2.0.2-beta, tag: v2.0.1.1) Merge pull request #24 from sul-dlss/readme-update (2016-12-14 14:46:31 -0800)
+67254af ndushay@stanford.edu - README: add version badge, a bit more descriptive text (2016-12-14 14:24:56 -0800)
+M	README.md
+02f8459 ggeisler@gmail.com - (tag: v2.0.1-beta) Add border to right-end of year graph (2016-02-22 12:15:53 -0800)
+M	wayback-webapp/src/main/webapp/css/su-wayback.css
+021d1c2 ggeisler@gmail.com - Update width of year chart to accomodate year 2015 without wrapping (2016-02-22 11:06:59 -0800)
+M	wayback-webapp/src/main/webapp/css/su-wayback.css
+fbf6717 aalsum@stanford.edu - Change the width to initial in wm table in Toolbar (2015-03-04 11:39:26 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+fb3def1 aalsum@stanford.edu - Expand the graph width in the bubbleCalendar page (2015-02-19 12:01:25 -0800)
+M	wayback-webapp/src/main/webapp/css/su-wayback.css
+db9a670 aalsum@stanford.edu - Add Google Analytics support (2015-02-18 16:02:30 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+8cbd92f ggeisler@gmail.com - Adjust overlay CSS to prevent archive page CSS from overriding overlay styling (2014-11-13 11:17:05 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+6ccd9a1 ggeisler@gmail.com - Correct alt tag for SUL logo image (2014-11-12 12:26:15 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+ddf98a6 ggeisler@gmail.com - Widen overlay input box so longer URLs are visible (2014-11-12 12:24:53 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+be28fde ggeisler@gmail.com - Add CSS reset to styles scoped to overlay (2014-11-12 12:19:28 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+07238e5 ggeisler@gmail.com - Move Toolbar overlay toggle and add drop shadow to overlay (2014-11-03 11:11:48 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+8c18247 ggeisler@gmail.com - Rename label to SWAP home link (2014-11-03 10:47:33 -0800)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+b97fe85 aalsum@stanford.edu - Change the name from Wayback to Portal in Toolbar (2014-10-30 11:02:29 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+7c2856d aalsum@stanford.edu - Change the name from Wayback to Portal in title (2014-10-30 10:45:08 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+d3341af aalsum@stanford.edu - Add Email servlet code (2014-10-28 13:26:20 -0700)
+M	wayback-core/pom.xml
+M	wayback-core/src/main/java/edu/stanford/dlss/contact/EmailProcessor.java
+M	wayback-core/src/main/java/edu/stanford/dlss/contact/EmailServlet.java
+a3e57fb aalsum@stanford.edu - Make the Toolbar hide by default (2014-10-28 13:17:35 -0700)
+A	wayback-core/src/main/java/edu/stanford/dlss/contact/EmailProcessor.java
+A	wayback-core/src/main/java/edu/stanford/dlss/contact/EmailServlet.java
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+85460bb aalsum@stanford.edu - Change Feedback link to mailto temporarily (2014-10-27 14:42:54 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+ae25338 aalsum@stanford.edu - Escape HTML exception message to avoid XSS threat (2014-10-27 13:28:32 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/exception/HTMLError.jsp
+c64f933 aalsum@stanford.edu - Change Wayback Info link (2014-10-27 09:49:13 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+59e1e63 aalsum@stanford.edu - Add http headers and DOCType to enforce IE to render the page with latest standard (2014-10-26 19:38:00 -0700)
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlSAXRewriteReplayRenderer.java
+M	wayback-core/src/main/java/org/archive/wayback/webapp/AccessPoint.java
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlSAXRewriteReplayRendererTest.java
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+1d71ee4 aalsum@stanford.edu - Expand the month and day in URL to two digits (2014-10-24 10:23:45 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+40a26b0 aalsum@stanford.edu - Change the timemap range in the index page (2014-10-23 17:30:00 -0700)
+M	wayback-webapp/src/main/webapp/index.jsp
+f5befce aalsum@stanford.edu - Remove un-needed spaces (2014-10-23 15:56:51 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+86d3ba9 aalsum@stanford.edu - Fix typos in index.jsp (2014-10-23 13:46:15 -0700)
+M	wayback-webapp/src/main/webapp/index.jsp
+53f7d47 aalsum@stanford.edu - Change the favicon.ico to Stanford logo (2014-10-23 13:43:13 -0700)
+M	wayback-webapp/src/main/webapp/favicon.ico
+333fa91 aalsum@stanford.edu - Add cookie support for Show-Hide overlay for all the links (2014-10-23 13:25:32 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/CookieJS.jsp
+1cf0565 aalsum@stanford.edu - Remove un-needed spaces (2014-10-22 15:44:19 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+3468ea5 ggeisler@gmail.com - Fix UI spacing problem by adding browser prefixes for box-sizing property (2014-10-22 14:45:41 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+8c494de aalsum@stanford.edu - Changing the style of URL redirection notice page (2014-10-22 12:25:21 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/UrlRedirectNotice.jsp
+640092a aalsum@stanford.edu - Change the Next-Prev captures behavior to remember user preferences (2014-10-22 11:27:47 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+9e7f2e3 ggeisler@gmail.com - Decrease size of font in overlay showing number of captures (2014-10-21 15:08:25 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+1026035 ggeisler@gmail.com - Update styling details (2014-10-21 14:05:46 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+88c8751 aalsum@stanford.edu - Fix merge problem (2014-10-21 13:30:28 -0700)
+MM	wayback-webapp/src/main/webapp/index.jsp
+6faada9 aalsum@stanford.edu - Update the last and end replay URL (2014-10-21 13:28:28 -0700)
+M	wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+f8f9eca aalsum@stanford.edu - Update the front page to include SLAC featured pages (2014-10-21 13:27:43 -0700)
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1991.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1994.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1996.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1999.jpg
+M	wayback-webapp/src/main/webapp/index.jsp
+0823aa4 aalsum@stanford.edu - Update the front page to include SLAC featured pages (2014-10-21 12:44:20 -0700)
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1991.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1994.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1996.jpg
+A	wayback-webapp/src/main/webapp/images/featured_sites/slac_1999.jpg
+M	wayback-webapp/src/main/webapp/index.jsp
+f2c1ad5 aalsum@stanford.edu - Remove height in BubbelCalendar container (2014-10-17 18:07:50 -0700)
+M	wayback-webapp/src/main/webapp/css/su-wayback.css
+94b4661 aalsum@stanford.edu - Add https for jquery link (2014-10-17 17:39:00 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+745fd01 aalsum@stanford.edu - Merge Stanford style toolbar with some updates to the backend (2014-10-17 13:19:02 -0700)
+M	wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/partition/ToolBarData.java
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+f4176ce aalsum@stanford.edu - Change default graph color (2014-10-17 09:24:58 -0700)
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/GraphConfiguration.java
+a74ade9 aalsum@stanford.edu - Revert "Revert "Change the toolbar and graph java backend code"" (2014-10-17 00:07:40 -0700)
+A	wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/partition/ToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/RegionGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElements.java
+1fca495 aalsum@stanford.edu - Revert "Change the toolbar and graph java backend code" (2014-10-16 23:43:00 -0700)
+D	wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/partition/ToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/RegionGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElements.java
+8d6ddea aalsum@stanford.edu - Merge IIPC Release 2.0.1 with Stanford branding (2014-10-16 22:21:39 -0700)
+MM	src/site/xdoc/release_notes.xml
+MM	wayback-core/pom.xml
+MM	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+MM	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+MM	wayback-webapp/src/main/webapp/css/styles.css
+6ca0de7 aalsum@stanford.edu - (origin/stanford-branding) Merge Stanford branding (2014-10-16 21:53:04 -0700)
+M	.gitignore
+A	CONTRIBUTING.md
+M	dist/pom.xml
+M	pom.xml
+D	src/site/xdoc/downloads.xml
+A	src/site/xdoc/downloads.xml.vm
+M	src/site/xdoc/release_notes.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-core/src/main/java/org/archive/wayback/UrlCanonicalizer.java
+M	wayback-core/src/main/java/org/archive/wayback/accesscontrol/robotstxt/Robotstxt.java
+M	wayback-core/src/main/java/org/archive/wayback/accesscontrol/staticmap/StaticListExclusionFilter.java
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrl.java
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlContextResultURIConverterFactory.java
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/FastArchivalUrlReplayParseEventHandler.java
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/StandardAttributeRewriter.java
+M	wayback-core/src/main/java/org/archive/wayback/core/WaybackRequest.java
+M	wayback-core/src/main/java/org/archive/wayback/domainprefix/DomainPrefixCompositeRequestParser.java
+M	wayback-core/src/main/java/org/archive/wayback/exception/CustomNotInArchiveExceptionRenderer.java
+M	wayback-core/src/main/java/org/archive/wayback/partition/PartitionsToGraph.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/HttpHeaderOperation.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/ReplayRendererDecorator.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/StringHttpServletResponseWrapper.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/TextDocument.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/TextReplayRenderer.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/charset/CharsetDetector.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/html/ReplayParseContext.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/html/rules/AttributeModifyingRule.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/SearchResultSource.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/cdx/CDXIndex.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/cdxserver/EmbeddedCDXServerIndex.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/AlphaPartitionedIndex.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/RangeGroup.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/distributed/RangeMember.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/filters/SchemeMatchFilter.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/ziplines/ZiplinedBlock.java
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/ziplines/ZiplinesSearchResultSource.java
+M	wayback-core/src/main/java/org/archive/wayback/resourcestore/indexer/IndexQueueUpdater.java
+M	wayback-core/src/main/java/org/archive/wayback/resourcestore/indexer/WarcIndexer.java
+M	wayback-core/src/main/java/org/archive/wayback/resourcestore/locationdb/FlatFileResourceFileLocationDB.java
+M	wayback-core/src/main/java/org/archive/wayback/util/StringFormatter.java
+M	wayback-core/src/main/java/org/archive/wayback/util/url/UrlOperations.java
+M	wayback-core/src/main/java/org/archive/wayback/webapp/AccessPoint.java
+M	wayback-core/src/test/java/org/archive/wayback/resourceindex/distributed/AlphaPartitionedIndexTest.java
+M	wayback-webapp/pom.xml
+A	wayback-webapp/src/main/webapp/images/toolbar/su-wayback-m-left-arrow.png
+A	wayback-webapp/src/main/webapp/images/toolbar/su-wayback-m-right-arrow.png
+A	wayback-webapp/src/main/webapp/js/su-wayback-m-bootstrap-tooltip.js
+A	wayback-webapp/src/main/webapp/jsp/Toolbar.jsp
+4f88e8a aalsum@stanford.edu - Merge IIPC Release 2.0 (2014-10-16 19:31:42 -0700)
+MM	pom.xml
+MM	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+MM	wayback-webapp/src/main/webapp/css/styles.css
+5b70518 aalsum@stanford.edu - Remove nomonth argument from graph.jsp url (2014-10-03 17:44:56 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+59a9b66 aalsum@stanford.edu - Add Stanford branding (2014-10-03 16:05:15 -0700)
+M	.gitignore
+M	wayback-webapp/src/main/webapp/WEB-INF/exception/HTMLError.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/query/CalendarResults.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/query/HTMLUrlResults.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-footer.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+M	wayback-webapp/src/main/webapp/advanced_search.jsp
+A	wayback-webapp/src/main/webapp/css/bootstrap.min.css
+M	wayback-webapp/src/main/webapp/css/styles.css
+A	wayback-webapp/src/main/webapp/css/su-wayback-toolbar.css
+A	wayback-webapp/src/main/webapp/css/su-wayback.css
+A	wayback-webapp/src/main/webapp/images/SUL-Logo-white-text-h25.png
+A	wayback-webapp/src/main/webapp/images/featured_sites/nytimes-2002.png
+A	wayback-webapp/src/main/webapp/images/featured_sites/stanford-2007.png
+A	wayback-webapp/src/main/webapp/images/featured_sites/stanford-arts-1997.png
+A	wayback-webapp/src/main/webapp/images/featured_sites/sul-2005.png
+A	wayback-webapp/src/main/webapp/images/logo_WM.gif
+A	wayback-webapp/src/main/webapp/images/toolbar/SUL-Logo-h25.png
+A	wayback-webapp/src/main/webapp/images/toolbar/SUL-Logo-white-text-h25.png
+A	wayback-webapp/src/main/webapp/images/toolbar/transp-white-pixel.png
+M	wayback-webapp/src/main/webapp/index.jsp
+A	wayback-webapp/src/main/webapp/js/bootstrap.min.js
+A	wayback-webapp/src/main/webapp/js/su-wayback.js
+a54f086 aalsum@stanford.edu - Change the toolbar and graph java backend code (2014-10-03 15:57:36 -0700)
+A	wayback-core/src/main/java/org/archive/wayback/partition/InteractiveToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/partition/ToolBarData.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/RegionGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElement.java
+M	wayback-core/src/main/java/org/archive/wayback/util/graph/ValueGraphElements.java
+a4248cb johnerikhalse@gmail.com - (tag: openwayback-2.0.0) [maven-release-plugin] prepare release openwayback-2.0.0 (2014-09-12 18:47:46 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+837154b johnerikhalse@gmail.com - GitHubs site plugin seems to have problems with the distribution management url. Resetting it to the state of BETA.2 release. (2014-09-12 18:46:16 +0200)
+M	pom.xml
+8ae670b johnerikhalse@gmail.com - [maven-release-plugin] rollback the release of openwayback-2.0.0 (2014-09-12 18:37:24 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+bb4b4d5 johnerikhalse@gmail.com - [maven-release-plugin] prepare for next development iteration (2014-09-12 17:44:41 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+03e3a9a johnerikhalse@gmail.com - [maven-release-plugin] prepare release openwayback-2.0.0 (2014-09-12 17:44:36 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+7b840b8 johnerikhalse@gmail.com - For some reason version is not picked up from plugin dependencies. (2014-09-12 17:37:45 +0200)
+M	pom.xml
+ff9b354 johnerikhalse@gmail.com - Changing version to prepare for 2.0.0 release (2014-09-12 17:17:13 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+84fbdf0 johnerikhalse@gmail.com - [maven-release-plugin] rollback the release of openwayback-2.0.0 (2014-09-12 16:51:27 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+464bb78 johnerikhalse@gmail.com - [maven-release-plugin] prepare for next development iteration (2014-09-12 16:43:33 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+ab07b9d johnerikhalse@gmail.com - [maven-release-plugin] prepare release openwayback-2.0.0 (2014-09-12 16:43:29 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+b00a6a0 johnerikhalse@gmail.com - Cannot use HTML-entities. Replaced with numeric entity. (2014-09-12 16:38:27 +0200)
+M	pom.xml
+a490665 johnerikhalse@gmail.com - Fixed link to release notes (2014-09-12 15:57:01 +0200)
+M	src/site/xdoc/index.xml
+7e0a5ad johnerikhalse@gmail.com - Fixed mismatched xml-tags (2014-09-12 15:31:26 +0200)
+M	src/site/xdoc/release_notes.xml
+f40cc15 roger.coram@bl.uk - Merge branch 'preparation_for_2.0.0' (2014-09-12 14:14:36 +0100)
+fe86ca5 helen.hockx-yu@bl.uk - Update index.xml (2014-09-12 14:00:26 +0100)
+M	src/site/xdoc/index.xml
+7e6eb27 helen.hockx-yu@bl.uk - Update release_notes.xml (2014-09-12 13:53:54 +0100)
+M	src/site/xdoc/release_notes.xml
+649932f helen.hockx-yu@bl.uk - Update release_notes.xml (2014-09-12 13:50:43 +0100)
+M	src/site/xdoc/release_notes.xml
+d8bcf97 helen.hockx-yu@bl.uk - Update index.xml (2014-09-12 13:31:52 +0100)
+M	src/site/xdoc/index.xml
+2075955 helen.hockx-yu@bl.uk - Update index.xml (2014-09-12 13:16:42 +0100)
+M	src/site/xdoc/index.xml
+c9a1098 helen.hockx-yu@bl.uk - Update index.xml (2014-09-12 13:15:39 +0100)
+M	src/site/xdoc/index.xml
+2537196 johnerikhalse@gmail.com - Fixed that some of the help-links pointed to unreachable pages. Put the URL in properties file so it only need to changed one place. (2014-09-12 12:09:29 +0200)
+M	wayback-webapp/src/main/resources/WaybackUI.properties
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/LiveWebDisclaimer.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/Toolbar.jsp
+M	wayback-webapp/src/main/webapp/help.jsp
+79713f3 johnerikhalse@gmail.com - Fixed typo and missing mentioning of WARC in message on landing page (2014-09-12 09:03:11 +0200)
+M	wayback-webapp/src/main/resources/WaybackUI.properties
+eadb2f3 johnerikhalse@gmail.com - Updated developers list (2014-09-11 12:54:57 +0200)
+M	pom.xml
+b63681b johnerikhalse@gmail.com - Merge pull request #158 from iipc/proxy-accesspointpath (2014-09-11 12:46:31 +0200)
+32bb0bf roger.coram@bl.uk - (iipc/proxy-accesspointpath) Added 'accessPointPath' to default proxy config. (2014-09-10 15:00:27 +0100)
+M	wayback-webapp/src/main/webapp/WEB-INF/wayback.xml
+bedf981 johnerikhalse@gmail.com - Merge branch 'nlnwa-DateLocaleIssue148' (2014-09-10 13:26:19 +0200)
+909d70c johnerikhalse@gmail.com - Merge branch 'DateLocaleIssue148' of https://github.com/nlnwa/openwayback into nlnwa-DateLocaleIssue148 (2014-09-10 13:25:35 +0200)
+3024fd1 johnerikhalse@gmail.com - Updating .gitignore for NetBeans users (2014-09-10 12:50:52 +0200)
+M	.gitignore
+be8ecda johnerikhalse@gmail.com - Update dependency on webarchive-commons. Needed for issue #148 (2014-09-10 12:50:02 +0200)
+M	pom.xml
+M	src/site/xdoc/release_notes.xml
+4dd1cb5 johnerikhalse@gmail.com - Added recent pull requests. (2014-09-10 12:38:37 +0200)
+M	src/site/xdoc/release_notes.xml
+08b2dd6 roger.coram@bl.uk - Added recent pull requests. (2014-09-05 10:37:39 +0100)
+M	src/site/xdoc/release_notes.xml
+9c2353b roger.coram@bl.uk - Merge branch 'ibnesayeed-master' (2014-09-05 09:19:03 +0100)
+203272e roger.coram@bl.uk - Merge branch 'master' of https://github.com/ibnesayeed/openwayback into ibnesayeed-master (2014-09-05 09:11:25 +0100)
+98722e5 roger.coram@bl.uk - Merge branch 'kris-sigur-Issue-100' (2014-09-05 09:01:42 +0100)
+d62cc2b roger.coram@bl.uk - Merge branch 'Issue-100' of https://github.com/kris-sigur/openwayback into kris-sigur-Issue-100 (2014-09-05 08:58:10 +0100)
+bceea12 kristinn@landsbokasafn.is - Fixed missing closing tag (2014-09-03 15:54:15 +0000)
+M	src/site/xdoc/release_notes.xml
+753af40 helen.hockx-yu@bl.uk - Update release_notes.xml (2014-09-03 16:39:42 +0100)
+M	src/site/xdoc/release_notes.xml
+be0287b helen.hockx-yu@bl.uk - Update release_notes.xml (2014-09-03 15:01:23 +0100)
+M	src/site/xdoc/release_notes.xml
+2cdc689 helen.hockx-yu@bl.uk - Update index.xml (2014-09-03 14:49:18 +0100)
+M	src/site/xdoc/index.xml
+eb38f5f helen.hockx-yu@bl.uk - Update release_notes.xml (2014-09-03 14:29:32 +0100)
+M	src/site/xdoc/release_notes.xml
+a558bf7 kris.sigur@gmail.com - New logos as per issue #100 Added a place for logos on site, includes the EPS files Use logo in webapp. Changed color of main search bar to match the logo. More changes are likely needed to have it fit with the colors of the logo. (2014-09-02 15:09:59 +0000)
+A	src/site/resources/favicon.ico
+A	src/site/resources/images/OpenWayback-banner100.png
+A	src/site/resources/images/OpenWayback-logo100.png
+D	src/site/resources/images/ia_logo.gif
+A	src/site/resources/images/openwayback-banner.eps
+A	src/site/resources/images/openwayback-logo-only.eps
+M	src/site/site.xml
+A	src/site/xdoc/logos.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/GraphDisclaimer.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+M	wayback-webapp/src/main/webapp/css/styles.css
+A	wayback-webapp/src/main/webapp/images/OpenWayback-banner.png
+D	wayback-webapp/src/main/webapp/images/logo_WM.png
+D	wayback-webapp/src/main/webapp/images/logo_archive-sm.png
+D	wayback-webapp/src/main/webapp/images/wayback_logo_sm.gif
+D	wayback-webapp/src/main/webapp/images/wayback_logo_tr.gif
+f25b3c3 ibnesayeed@gmail.com - Memento configuration clean-up. (2014-09-01 19:03:55 -0400)
+D	wayback-webapp/src/main/webapp/WEB-INF/MementoReplay.xml
+D	wayback-webapp/src/main/webapp/WEB-INF/memento.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/wayback.xml
+0041e3d kristinn@landsbokasafn.is - Merge pull request #149 from nlnwa/DateLocaleIssue148 (2014-09-01 13:35:49 +0000)
+0517a78 kristinn@landsbokasafn.is - Merge pull request #152 from kris-sigur/Issue-133 (2014-08-29 13:23:28 +0000)
+5a9d58a kris.sigur@gmail.com - Updated link on help page. (2014-08-29 13:20:58 +0000)
+M	wayback-webapp/src/main/webapp/help.jsp
+5f2f41e roger.coram@bl.uk - Merge pull request #147 from kris-sigur/Issue-137 (2014-08-21 09:35:10 +0100)
+5e11fd1 johnerikhalse@gmail.com - Explicitly setting locale for dateformats (2014-08-12 18:03:11 +0200)
+M	wayback-cdx-server/src/main/java/org/archive/cdxserver/writer/MementoLinkWriter.java
+M	wayback-core/src/main/java/org/archive/wayback/memento/MementoUtils.java
+M	wayback-core/src/main/java/org/archive/wayback/util/partition/Partitioner.java
+M	wayback-core/src/test/java/org/archive/io/arc/TestARCReader.java
+M	wayback-core/src/test/java/org/archive/wayback/resourcestore/resourcefile/WarcResourceTest.java
+ebf1975 aalsum@stanford.edu - Merge remote-tracking branch 'upstream/master' (2014-08-06 16:31:08 -0700)
+MM	pom.xml
+MM	wayback-core/pom.xml
+MM	wayback-core/src/main/java/org/archive/wayback/core/WaybackRequest.java
+6e0eaa5 kris.sigur@gmail.com - Merge remote-tracking branch 'iipc/master' into Issue-137 (2014-08-05 13:50:08 +0000)
+MM	pom.xml
+b1f6bda roger.coram@bl.uk - Merge pull request #144 from kris-sigur/conf-fix (2014-07-24 08:35:14 +0100)
+f191eba aalsum@stanford.edu - Customized wayback style to Stanford colors and logo (2014-07-18 16:52:46 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/query/CalendarResults.jsp
+M	wayback-webapp/src/main/webapp/css/styles.css
+M	wayback-webapp/src/main/webapp/images/logo_WM.png
+M	wayback-webapp/src/main/webapp/images/toolbar/wayback-toolbar-logo.png
+M	wayback-webapp/src/main/webapp/images/wayback_logo_sm.gif
+M	wayback-webapp/src/main/webapp/images/wayback_logo_tr.gif
+38a6a05 kris.sigur@gmail.com - Getting rid of redundancies and making more settings configurable via the simple properties at the top of the config file. (2014-07-18 13:39:41 +0000)
+M	wayback-webapp/src/main/webapp/WEB-INF/BDBCollection.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/CDXCollection.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/wayback.xml
+02987da aalsum@stanford.edu - Fix date boundary (2014-07-17 19:03:20 -0700)
+6d64391 Andrew.Jackson@bl.uk - Merge pull request #143 from nlnwa/webarchive-commons-dependency (2014-07-16 16:46:03 +0100)
+b749edc Andrew.Jackson@bl.uk - Merge pull request #142 from nlnwa/master (2014-07-16 16:44:36 +0100)
+930b9ab johnerikhalse@gmail.com - Updated dependency on webarchive-commons to 1.1.3 (2014-07-16 16:33:21 +0200)
+M	pom.xml
+ff3378a johnerikhalse@gmail.com - Explicitly setting locale for dateformat. Required for unit test to succeed on machines with non-english locale. (2014-07-15 15:09:35 +0200)
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlRequestParserTest.java
+97e046f Andrew.Jackson@bl.uk - Attempting to find a usable timezone, UTC+00:00. (2014-07-07 15:12:08 +0100)
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlRequestParserTest.java
+5670997 Andrew.Jackson@bl.uk - Attempting to find a usable timezone, UTC. (2014-07-07 14:54:29 +0100)
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlRequestParserTest.java
+e049cb2 Andrew.Jackson@bl.uk - Attempting to find a usable timezone. (2014-07-07 14:46:57 +0100)
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlRequestParserTest.java
+ca031bc kristinn@landsbokasafn.is - Merge pull request #140 from nlnwa/master (2014-07-07 13:34:29 +0000)
+MM	pom.xml
+b483555 Andrew.Jackson@bl.uk - Disabled JDK8 build. (2014-07-07 14:30:07 +0100)
+M	.travis.yml
+b251ca5 Andrew.Jackson@bl.uk - Added standard timezone offset. (2014-07-07 13:52:24 +0100)
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlRequestParserTest.java
+e99809f Andrew.Jackson@bl.uk - URL and timeout in this test appear to be causing problems. (2014-07-07 13:29:37 +0100)
+M	wayback-core/src/test/java/org/archive/wayback/liveweb/URLtoARCCacherTest.java
+548abd5 Andrew.Jackson@bl.uk - Merge branch 'isido-iipc-issue-136' (2014-07-07 12:38:58 +0100)
+bdacc11 Andrew.Jackson@bl.uk - Added placeholders for more documentation details. (2014-07-07 12:38:48 +0100)
+M	src/site/xdoc/index.xml
+M	src/site/xdoc/release_notes.xml
+893f191 Andrew.Jackson@bl.uk - Also added JDK8 as a Travis build target. (2014-07-07 12:38:06 +0100)
+M	.travis.yml
+b35e37b Andrew.Jackson@bl.uk - Merge branch 'iipc-issue-136' of github.com:isido/openwayback into isido-iipc-issue-136 (2014-07-07 12:37:36 +0100)
+MM	pom.xml
+4414f0d johnerikhalse@gmail.com - Fixed typo in pom which should make site-generation a lot faster. (2014-07-07 12:38:34 +0200)
+M	pom.xml
+38eadcf ilja.sidoroff@helsinki.fi - Added maven profile for compiling with JDK 8 (2014-07-07 12:19:56 +0300)
+M	pom.xml
+f1b80d0 kris.sigur@gmail.com - Overrode the heading for URL to be "Github Profile@ (2014-07-04 11:10:00 +0000)
+A	src/site/custom/project-info-report.properties
+3b1c694 kris.sigur@gmail.com - Updated the developers and contributors list. (2014-07-04 11:08:34 +0000)
+M	pom.xml
+84068a1 roger.coram@bl.uk - Merge pull request #130 from nlnwa/master (2014-07-04 09:22:06 +0100)
+4c8d516 roger.coram@bl.uk - Merge pull request #134 from ukwa/ia-update-branch-2014-06-30 (2014-07-03 14:25:09 +0100)
+cca36e3 Andrew.Jackson@bl.uk - Merge branch 'master' of github.com:internetarchive/wayback into ia-update-branch-2014-06-30 (2014-06-30 16:26:33 +0100)
+MM	wayback-core/pom.xml
+MM	wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlCSSReplayRenderer.java
+MM	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlCSSReplayRendererTest.java
+6dfb08e Andrew.Jackson@bl.uk - Merge branch 'master' of github.com:iipc/openwayback (2014-06-30 16:23:50 +0100)
+389b009 aalsum@stanford.edu - Change the version to 2.0.0.BETA.2.1-SNAPSHOT (2014-06-24 13:39:40 -0700)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+60ba6aa aalsum@stanford.edu - Make the acceptable starting date from 1996 to 1991 (2014-06-24 10:35:52 -0700)
+M	contrib/ia/global-wayback/src/main/webapp/WEB-INF/ProxyRWReplay.xml
+M	src/site/xdoc/administrator_manual.xml
+M	wayback-core/src/main/java/org/archive/wayback/core/WaybackRequest.java
+M	wayback-core/src/main/java/org/archive/wayback/util/Timestamp.java
+M	wayback-core/src/test/java/org/archive/wayback/util/TimestampTest.java
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+3922c66 aalsum@stanford.edu - (tag: openwayback-2.0.0.BETA.2.1) Make the acceptable starting date from 1996 to 1991 (2014-06-24 10:07:51 -0700)
+M	contrib/ia/global-wayback/src/main/webapp/WEB-INF/ProxyRWReplay.xml
+M	src/site/xdoc/administrator_manual.xml
+M	wayback-core/src/main/java/org/archive/wayback/core/WaybackRequest.java
+M	wayback-core/src/main/java/org/archive/wayback/util/Timestamp.java
+M	wayback-core/src/test/java/org/archive/wayback/util/TimestampTest.java
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+8888376 johnerikhalse@gmail.com - Merge remote-tracking branch 'upstream/master' (2014-06-13 11:05:39 +0200)
+dc72e30 johnerikhalse@gmail.com - - Made base URI absolute. Required by mvn site:stage - Cleaned up plugin management. All Maven plugins are now declared in <pluginManagement/> - Javadoc and jxr reports only on top level pom (aggregated report) - Activated Reports menu in submodules - Made distinction between which standard reports should be on top level pom and sub poms (2014-06-13 09:08:21 +0200)
+M	pom.xml
+8f93445 johnerikhalse@gmail.com - - Changed IIPC-Logo link to point to netpreserve.org - Added breadcrumbs to make it easier to see which submodule you are looking at - Changed bugtracker link to point to github - Activated Reports menu in submodules (2014-06-12 14:55:09 +0200)
+M	src/site/site.xml
+4f3cd76 johnerikhalse@gmail.com - Added Java cross reference plugin to site-reports. (2014-06-11 15:01:14 +0200)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+d60b3b5 roger.coram@bl.uk - Merge pull request #127 from kris-sigur/Issue-126 (2014-05-27 09:52:58 +0100)
+c818489 kris.sigur@gmail.com - Resolves issue #126 (2014-05-26 10:33:00 +0000)
+M	pom.xml
+220c12b Andrew.Jackson@bl.uk - [maven-release-plugin] prepare for next development iteration (2014-05-14 17:11:23 +0100)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+406849b Andrew.Jackson@bl.uk - (tag: openwayback-2.0.0.BETA.2) [maven-release-plugin] prepare release openwayback-2.0.0.BETA.2 (2014-05-14 17:11:19 +0100)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+b84cc25 Andrew.Jackson@bl.uk - Switched to new JWAT 1.0.1 release. (2014-05-14 17:00:06 +0100)
+M	wayback-core/pom.xml
+0a10928 johnerikhalse@gmail.com - Merge remote-tracking branch 'upstream/master' (2014-05-14 11:07:07 +0200)
+1053e9a johnerikhalse@gmail.com - Revert "* Updated Site Plugin to allow for newest Maven-version" (2014-05-14 10:58:17 +0200)
+M	pom.xml
+e8e6787 Andrew.Jackson@bl.uk - Merge pull request #112 from kris-sigur/Issue-111 (2014-05-13 22:05:38 +0100)
+2fbe449 johnerikhalse@gmail.com - * Updated Site Plugin to allow for newest Maven-version (2014-05-13 15:22:35 +0200)
+M	pom.xml
+529c039 kristinn@landsbokasafn.is - Merge pull request #110 from cdlib/feature/issue_45 (2014-05-08 15:24:10 +0000)
+39ab72b kris.sigur@gmail.com - Removing partial translations as per issue #111 (2014-04-07 11:10:47 +0000)
+D	wayback-webapp/src/main/resources/WaybackUI_cs.properties
+D	wayback-webapp/src/main/resources/WaybackUI_de.properties
+6526b63 Andrew.Jackson@bl.uk - Merge branch 'master' of github.com:iipc/openwayback (2014-04-04 10:10:10 +0100)
+7c7ed0b erik.hetzner@ucop.edu - strip IA branding; change Wayback to OpenWayback (2014-04-02 17:19:10 -0700)
+M	dist/pom.xml
+M	wayback-core/pom.xml
+M	wayback-core/src/test/resources/WaybackUI.properties
+M	wayback-webapp/pom.xml
+M	wayback-webapp/src/main/resources/WaybackUI.properties
+M	wayback-webapp/src/main/webapp/WEB-INF/query/BubbleCalendar.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/ArchiveBrokenCSSComment.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/ArchiveCSSComment.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/ArchiveComment.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/GraphDisclaimer.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/replay/UrlRedirectNotice.jsp
+M	wayback-webapp/src/main/webapp/WEB-INF/template/UI-header.jsp
+M	wayback-webapp/src/main/webapp/images/logo_WM.png
+M	wayback-webapp/src/main/webapp/images/toolbar/wayback-toolbar-logo.png
+M	wayback-webapp/src/main/webapp/images/wayback_logo_sm.gif
+M	wayback-webapp/src/main/webapp/images/wayback_logo_tr.gif
+M	wayback-webapp/src/main/webapp/index.jsp
+M	wayback-webapp/src/main/webapp/jsp/Interstitial.jsp
+M	wayback-webapp/src/main/webapp/opensearchdescription.xml
+9736782 egh@e6h.org - Merge pull request #109 from cdlib/feature/issue_99 (2014-03-31 13:43:53 -0700)
+1bd95a3 egh@e6h.org - remove untranslated fr_CA translation (2014-03-27 16:14:50 -0700)
+D	wayback-webapp/src/main/resources/WaybackUI_fr_CA.properties
+1cc5a40 egh@e6h.org - Merge pull request #107 from cdlib/feature/issue_94 (2014-03-27 16:07:21 -0700)
+6e16ea9 egh@e6h.org - Merge pull request #108 from mementoweb/master (2014-03-25 15:55:06 -0700)
+b2b7152 ludab@lanl.gov - removing url  truncation in timemap (2014-03-25 15:51:30 -0600)
+M	wayback-core/src/main/java/org/archive/wayback/memento/TimeMapRequestParser.java
+2bd1f12 erik.hetzner@ucop.edu - document explicit port and access point prefixes (2014-03-25 14:16:52 -0700)
+M	src/site/site.xml
+M	src/site/xdoc/access_point_naming.xml
+M	src/site/xdoc/administrator_manual.xml
+c68a6ae Andrew.Jackson@bl.uk - Merge pull request #105 from internetarchive/ari-3752 (2014-03-25 09:00:22 +0000)
+31a9129 egh@e6h.org - Merge pull request #102 from cdlib/feature/issue_94 (2014-03-20 15:39:12 -0700)
+06c8416 egh@e6h.org - Merge pull request #103 from kris-sigur/Issue94 (2014-03-19 08:49:30 -0700)
+71933c6 kris.sigur@gmail.com - Issue: bean names should not be meaningful #94 https://github.com/iipc/openwayback/issues/94 (2014-03-19 10:11:52 +0000)
+M	wayback-core/src/main/java/org/archive/wayback/util/webapp/BeanNameRegistrar.java
+7e6fa5a erik.hetzner@ucop.edu - stop using magic port:prefix bean names; use explicit configuration (2014-03-18 16:02:04 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/ComplexAccessPoint.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/memento.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/wayback.xml
+9799231 egh@e6h.org - Merge pull request #97 from cdlib/master (2014-03-18 10:33:23 -0700)
+afb1497 erik.hetzner@ucop.edu - replace localhost.archive.org with localhost in configuration (2014-03-12 16:41:40 -0700)
+M	wayback-webapp/src/main/webapp/WEB-INF/ComplexAccessPoint.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/memento.xml
+M	wayback-webapp/src/main/webapp/WEB-INF/wayback.xml
+faf2bb2 Andrew.Jackson@bl.uk - Syned up IA changes and resolved POM conflicts. (2014-03-08 11:32:21 +0000)
+MM	pom.xml
+MM	wayback-core/pom.xml
+MM	wayback-core/src/main/java/org/archive/wayback/replay/TextDocument.java
+ef80028 Andrew.Jackson@bl.uk - Minor documentatin system modes and version updates. (2014-03-07 23:22:55 +0000)
+M	pom.xml
+A	src/site/resources/images/iipc_logo.png
+M	src/site/site.xml
+M	src/site/xdoc/index.xml
+87d2104 Andrew.Jackson@bl.uk - Dealt with a small resource leak. (2014-03-07 21:51:40 +0000)
+M	wayback-core/src/main/java/org/archive/wayback/resourcestore/resourcefile/ResourceFactory.java
+4d8e029 Andrew.Jackson@bl.uk - Merge pull request #95 from ukwa/master (2014-03-07 15:55:01 +0000)
+0da7a4b Andrew.Jackson@bl.uk - Updated to the new artefact names. (2014-03-07 15:33:36 +0000)
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+9d0ae61 egh@e6h.org - Merge pull request #91 from ukwa/master (2014-02-14 10:07:56 -0800)
+1667c31 roger.coram@bl.uk - Fixed issue re. CSS @import; OpenWayback pull-request #1. (2014-02-14 11:31:14 +0000)
+M	wayback-core/src/main/java/org/archive/wayback/archivalurl/ArchivalUrlCSSReplayRenderer.java
+M	wayback-core/src/main/java/org/archive/wayback/replay/TextDocument.java
+M	wayback-core/src/test/java/org/archive/wayback/archivalurl/ArchivalUrlCSSReplayRendererTest.java
+cb8a078 Andrew.Jackson@bl.uk - [maven-release-plugin] prepare for next development iteration (2014-01-10 14:28:51 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+d59380d Andrew.Jackson@bl.uk - (tag: openwayback-2.0.0.BETA.1) [maven-release-plugin] prepare release openwayback-2.0.0.BETA.1 (2014-01-10 14:28:46 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+9811037 Andrew.Jackson@bl.uk - Fixed javadoc version issue and added GitHub Maven site deployment. (2014-01-10 14:25:52 +0000)
+M	pom.xml
+4876495 Andrew.Jackson@bl.uk - [maven-release-plugin] rollback the release of openwayback-2.0.0.BETA.1 (2014-01-10 09:55:20 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+c1d122b Andrew.Jackson@bl.uk - [maven-release-plugin] prepare for next development iteration (2014-01-10 07:52:22 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+b416911 Andrew.Jackson@bl.uk - [maven-release-plugin] prepare release openwayback-2.0.0.BETA.1 (2014-01-10 07:52:17 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+4e2dcbe Andrew.Jackson@bl.uk - [maven-release-plugin] rollback the release of openwayback-2.0.0.BETA.1 (2014-01-09 16:15:57 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+9cbbc35 Andrew.Jackson@bl.uk - [maven-release-plugin] prepare for next development iteration (2014-01-09 16:12:26 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+a1a7921 Andrew.Jackson@bl.uk - [maven-release-plugin] prepare release openwayback-2.0.0.BETA.1 (2014-01-09 16:12:22 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+e1d43ba Andrew.Jackson@bl.uk - Updated plugins to versions to avoid https://cwiki.apache.org/confluence/display/MAVEN/AetherClassNotFound. (2014-01-09 16:09:55 +0000)
+M	pom.xml
+f1bc23f Andrew.Jackson@bl.uk - [maven-release-plugin] rollback the release of openwayback-2.0.0.BETA.1 (2014-01-09 16:05:23 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+490b34b Andrew.Jackson@bl.uk - [maven-release-plugin] prepare for next development iteration (2014-01-09 15:59:43 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+83e45f5 Andrew.Jackson@bl.uk - [maven-release-plugin] prepare release openwayback-2.0.0.BETA.1 (2014-01-09 15:59:38 +0000)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+27401f8 Andrew.Jackson@bl.uk - fixed scm id (2014-01-09 15:49:14 +0000)
+M	pom.xml
+f8409d9 Andrew.Jackson@bl.uk - Attempted to up javadoc heap again. (2014-01-09 15:14:00 +0000)
+M	pom.xml
+017d008 Andrew.Jackson@bl.uk - Fixed scm info. (2014-01-09 15:12:12 +0000)
+M	pom.xml
+e104236 Andrew.Jackson@bl.uk - Upped heap alloc for javadoc. (2014-01-09 15:04:42 +0000)
+M	pom.xml
+baac18a Andrew.Jackson@bl.uk - Merge branch 'feature/fix-webxml' of github.com:cdlib/openwayback into cdlib-feature/fix-webxml (2014-01-09 14:53:03 +0000)
+dcde4dc anj@anjackson.net - Merge pull request #16 from ukwa/master (2014-01-09 06:39:34 -0800)
+6949ff9 erik.hetzner@ucop.edu - Fix web.xml namespaces for servlet version 2.5 (2014-01-08 16:48:50 -0800)
+M	wayback-cdx-server/src/main/webapp/WEB-INF/web.xml
+beb10b6 anj@anjackson.net - Merge pull request #1 from nlnwa/memento-header-locale (2014-01-07 05:47:56 -0800)
+6b56460 johnerikhalse@gmail.com - * Fiksing problem with memento-headers on machines with non-english locales. (2014-01-07 13:34:21 +0100)
+M	wayback-core/src/main/java/org/archive/wayback/memento/MementoUtils.java
+M	wayback-core/src/test/java/org/archive/wayback/webapp/AccessPointTest.java
+b935dca Andrew.Jackson@bl.uk - Added improved site reporting. (2013-12-12 14:30:02 +0000)
+M	pom.xml
+M	src/site/site.xml
+b49f340 Andrew.Jackson@bl.uk - Cleaned up POM and added Sonatype Releases repo. (2013-12-12 11:36:14 +0000)
+M	pom.xml
+474c3a7 Andrew.Jackson@bl.uk - Switch to main 1.1.0 release of commons-web (2013-12-12 11:25:41 +0000)
+M	pom.xml
+b503935 Andrew.Jackson@bl.uk - Updated Travis CI config. (2013-12-12 10:43:58 +0000)
+M	.travis.yml
+b937cca Andrew.Jackson@bl.uk - typo (2013-12-12 10:36:59 +0000)
+M	README.md
+0647cfa Andrew.Jackson@bl.uk - Added link to wiki. (2013-12-12 10:11:33 +0000)
+M	README.md
+a063ac2 Andrew.Jackson@bl.uk - Switched to Oracle Maven repo for SleepyCat JE. (2013-12-12 09:54:31 +0000)
+M	pom.xml
+d15c81b Andrew.Jackson@bl.uk - Updated to IIPC Travis build. (2013-12-12 09:36:05 +0000)
+M	.travis.yml
+0194e32 Andrew.Jackson@bl.uk - Switched to a Markdown readme. (2013-12-12 09:35:27 +0000)
+A	README.md
+D	README.txt
+1dfcb50 Andrew.Jackson@bl.uk - Updated README with CI info. (2013-12-12 09:35:13 +0000)
+M	README.txt
+03bc005 Andrew.Jackson@bl.uk - Fix to avoid fatal error when an unparseable file is hit. (2013-12-11 13:48:43 +0000)
+M	wayback-core/src/main/java/org/archive/wayback/resourcestore/indexer/IndexWorker.java
+c40cbec Andrew.Jackson@bl.uk - Fixing up to work on org.netpreserve branch. (2013-12-06 10:53:20 +0000)
+M	pom.xml
+M	wayback-cdx-server/src/main/webapp/WEB-INF/web.xml
+M	wayback-core/pom.xml
+M	wayback-core/src/main/java/org/archive/wayback/resourceindex/NutchResourceIndex.java
+31f6458 Andrew.Jackson@bl.uk - Merge branch 'master' of github.com:internetarchive/wayback (2013-12-06 10:46:52 +0000)
+MM	pom.xml
+MM	wayback-core/pom.xml
+c7da151 Andrew.Jackson@bl.uk - Fixed up dependency management. (2013-12-04 16:39:14 +0000)
+M	pom.xml
+M	wayback-core/pom.xml
+501e1e1 Andrew.Jackson@bl.uk - Removed defunct dependency on DSPACE snapshot. (2013-12-04 16:06:38 +0000)
+M	pom.xml
+8f013d9 Andrew.Jackson@bl.uk - Removed distribution statement as this is now handled via SonaType. (2013-12-04 16:01:09 +0000)
+M	pom.xml
+3f49f9b Andrew.Jackson@bl.uk - Updating issue management info. (2013-12-04 16:00:25 +0000)
+M	pom.xml
+618e9de Andrew.Jackson@bl.uk - Removed all the IIPC snapshot dependencies, H3 and DSpace remain. (2013-12-02 16:24:06 +0000)
+M	pom.xml
+M	wayback-core/pom.xml
+d9415d6 Andrew.Jackson@bl.uk - Minor change to the README. (2013-10-25 11:06:24 +0100)
+M	README.txt
+4fe4c39 Andrew.Jackson@bl.uk - Using preferred name, also in dependencies. (2013-10-25 10:28:27 +0100)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+8288836 Andrew.Jackson@bl.uk - Updated dependency names. (2013-10-22 13:01:53 +0100)
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+b3f4266 Andrew.Jackson@bl.uk - Used versions:set to bump overall version number to 2.0.0.BETA.1-SNAPSHOT. Also re-enabled the dist build. (2013-10-10 22:48:42 +0100)
+M	dist/pom.xml
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+09591c7 Andrew.Jackson@bl.uk - Excluded IA web-commons. (2013-10-10 14:54:41 +0100)
+M	wayback-core/pom.xml
+9d28e49 Andrew.Jackson@bl.uk - Switched names and fixed up the build. (2013-10-10 14:11:04 +0100)
+M	pom.xml
+M	wayback-cdx-server/pom.xml
+M	wayback-core/pom.xml
+M	wayback-webapp/pom.xml
+327a935 Andrew.Jackson@bl.uk - Adding license and Travis config. (2013-10-10 12:21:45 +0100)
+A	.travis.yml
+A	LICENSE

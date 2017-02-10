@@ -1,0 +1,260 @@
+commit fbf671782c45af66e03848c9c6cbb2440e1a05b0
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Mar 4 11:39:26 2015 -0800
+
+    Change the width to initial in wm table in Toolbar
+
+commit fb3def18238a97e6adb8df3c2d801fe5c5cb4610
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Feb 19 12:01:25 2015 -0800
+
+    Expand the graph width in the bubbleCalendar page
+
+commit db9a670b718fb86e871648cd75b223e34af99b49
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Feb 18 16:02:30 2015 -0800
+
+    Add Google Analytics support
+
+commit b97fe855c70b5af3d310faf1b90bb66ede1312cd
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 30 11:02:29 2014 -0700
+
+    Change the name from Wayback to Portal in Toolbar
+
+commit 7c2856da5292392fc87372c62bc12a92f56482a2
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 30 10:45:08 2014 -0700
+
+    Change the name from Wayback to Portal in title
+
+commit d3341afcc36b725964e5688a85c4689126546817
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 28 13:26:20 2014 -0700
+
+    Add Email servlet code
+
+commit a3e57fb05fd95a0724642fcebdfbe6ba344eff09
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 28 13:17:35 2014 -0700
+
+    Make the Toolbar hide by default
+
+commit 85460bb5a916de6d08ef8f7d8509bdb81c92ccce
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Mon Oct 27 14:42:54 2014 -0700
+
+    Change Feedback link to mailto temporarily
+
+commit ae25338fad3721860f7f20846067494c1a4a03e7
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Mon Oct 27 13:28:32 2014 -0700
+
+    Escape HTML exception message to avoid XSS threat
+
+commit c64f9330189c6636ab9be33364d8aa24dd4ae945
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Mon Oct 27 09:49:13 2014 -0700
+
+    Change Wayback Info link
+
+commit 59e1e63d5eded4e16d7858900c29a6c249821ebf
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Sun Oct 26 19:38:00 2014 -0700
+
+    Add http headers and DOCType to enforce IE to render the page with latest standard
+
+commit 1d71ee44f29733843b4f83a1bd29e3901bc16a1c
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 24 10:23:45 2014 -0700
+
+    Expand the month and day in URL to two digits
+
+commit 40a26b0d7d1cea7932f1f9f062931637818557ba
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 23 17:30:00 2014 -0700
+
+    Change the timemap range in the index page
+
+commit f5befce628e2ff1685f7c9c9e6bea5c863b61cfd
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 23 15:56:51 2014 -0700
+
+    Remove un-needed spaces
+
+commit 86d3ba9ded220d1fd0787bcb4888750d29993142
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 23 13:46:15 2014 -0700
+
+    Fix typos in index.jsp
+
+commit 53f7d4752976a40f272cbb2fb1580edf5946fffe
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 23 13:43:13 2014 -0700
+
+    Change the favicon.ico to Stanford logo
+
+commit 333fa912e2af406ef4ce7cb7f82a824a11222dc3
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 23 13:25:32 2014 -0700
+
+    Add cookie support for Show-Hide overlay for all the links
+
+commit 1cf0565de3acbb583f0a457310700bc1247f6600
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Oct 22 15:44:19 2014 -0700
+
+    Remove un-needed spaces
+
+commit 8c494decaa946c9932bc255e207350277199090b
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Oct 22 12:25:21 2014 -0700
+
+    Changing the style of URL redirection notice page
+
+commit 640092a556beb5b071afe1f1a34ca391a4144226
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Oct 22 11:27:47 2014 -0700
+
+    Change the Next-Prev captures behavior to remember user preferences
+
+commit 88c87511b5912e89c85abac49036a956ca6362b5
+Merge: 6faada9 0823aa4
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 21 13:30:28 2014 -0700
+
+    Fix merge problem
+
+commit 6faada9347d57aa2ca4e9df325ec391720104a2d
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 21 13:28:28 2014 -0700
+
+    Update the last and end replay URL
+
+commit f8f9ecaffc9e64ef9d48048e1163d5990f9e0650
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 21 12:44:20 2014 -0700
+
+    Update the front page to include SLAC featured pages
+
+commit 0823aa4aea63fa19fed986f31571b7c8ff9b0c04
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Oct 21 12:44:20 2014 -0700
+
+    Update the front page to include SLAC featured pages
+
+commit f2c1ad55864988ae501acce5bd9b0e3b873aa4d7
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 17 18:07:50 2014 -0700
+
+    Remove height in BubbelCalendar container
+
+commit 94b4661284f3f45dd961e41f7f5021e0b4667ee6
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 17 17:39:00 2014 -0700
+
+    Add https for jquery link
+
+commit 745fd01d987aa60fb94a831db35ffa098fbdc30d
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 17 13:19:02 2014 -0700
+
+    Merge Stanford style toolbar with some updates to the backend
+
+commit f4176ceff85662843a4503e68848ce0449cddaad
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 17 09:24:58 2014 -0700
+
+    Change default graph color
+
+commit a74ade9a7ebc6d9ff75f5212fc006dee46863c45
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 17 00:07:40 2014 -0700
+
+    Revert "Revert "Change the toolbar and graph java backend code""
+    
+    This reverts commit 1fca49594ffabd4d6f93e3c414816206e6dca94b.
+
+commit 1fca49594ffabd4d6f93e3c414816206e6dca94b
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 16 23:43:00 2014 -0700
+
+    Revert "Change the toolbar and graph java backend code"
+    
+    This reverts commit a54f086bba3178eafdc7adec978063a352d1c9b2.
+
+commit 8d6ddeab9f7e7d2f9c01b8b6e695e5e25bfbc945
+Merge: 4f88e8a 6ca0de7
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 16 22:21:39 2014 -0700
+
+    Merge IIPC Release 2.0.1 with Stanford branding
+
+commit 6ca0de70ace1cf7cf6c540a21222aec0f80cb154
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 16 21:53:04 2014 -0700
+
+    Merge Stanford branding
+
+commit 4f88e8aaac20a0001f3e28a947e2cad72b451563
+Merge: ebf1975 a4248cb
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Oct 16 19:31:42 2014 -0700
+
+    Merge IIPC Release 2.0
+
+commit 5b7051845e942c63fe8e9b4cfab75d410afbcc7a
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 3 17:44:56 2014 -0700
+
+    Remove nomonth argument from graph.jsp url
+
+commit 59a9b667feca23eff4c86fd898bd9a2d1701ab13
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 3 16:05:15 2014 -0700
+
+    Add Stanford branding
+
+commit a54f086bba3178eafdc7adec978063a352d1c9b2
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Oct 3 15:57:36 2014 -0700
+
+    Change the toolbar and graph java backend code
+
+commit ebf19751c574257f4c332eb652599a6f8cb9f8de
+Merge: f191eba b1f6bda
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Wed Aug 6 16:31:08 2014 -0700
+
+    Merge remote-tracking branch 'upstream/master'
+
+commit f191eba3e636b9045b15028004fc9f1c359eaaff
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Fri Jul 18 16:52:46 2014 -0700
+
+    Customized wayback style to Stanford colors and logo
+
+commit 02987daf2d0b955877ab794046a8360eba8986ab
+Merge: 389b009 3922c66
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Thu Jul 17 19:03:20 2014 -0700
+
+    Fix date boundary
+
+commit 389b009cae95a214d2bb9ed3cf66f323efff9725
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Jun 24 13:39:40 2014 -0700
+
+    Change the version to 2.0.0.BETA.2.1-SNAPSHOT
+
+commit 60ba6aadeddb5c82df31b13525e486067ad9bf5d
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Jun 24 10:07:51 2014 -0700
+
+    Make the acceptable starting date from 1996 to 1991
+
+commit 3922c66243ef7a1e74a24a4fc0514fb1f180bc32
+Author: Ahmed AlSum <aalsum@stanford.edu>
+Date:   Tue Jun 24 10:07:51 2014 -0700
+
+    Make the acceptable starting date from 1996 to 1991

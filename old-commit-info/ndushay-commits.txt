@@ -1,0 +1,6 @@
+d46e199 ndushay@stanford.edu - (HEAD, origin/master, origin/HEAD, master) Merge pull request #26 from sul-dlss/multilevel-index (2017-01-24 13:48:16 -0800)
+70542c2 ndushay@stanford.edu - trying for jacoco and coveralls (2017-01-20 20:20:48 -0800)
+4ed66c9 ndushay@stanford.edu - pom.xml: reformat and change to sul-dlss instead of iipc (2017-01-20 20:20:47 -0800)
+1d3171f ndushay@stanford.edu - README: update to reality (2017-01-20 20:20:47 -0800)
+be52a15 ndushay@stanford.edu - travis first pass (2017-01-20 20:20:34 -0800)
+67254af ndushay@stanford.edu - README: add version badge, a bit more descriptive text (2016-12-14 14:24:56 -0800)

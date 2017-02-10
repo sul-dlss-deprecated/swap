@@ -1,0 +1,69 @@
+commit 02f8459ead0369d32cbbb4989d36e856a44eae29
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Mon Feb 22 12:15:53 2016 -0800
+
+    Add border to right-end of year graph
+
+commit 021d1c29c84605a15780da27c806c677a6cb448f
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Mon Feb 22 11:06:59 2016 -0800
+
+    Update width of year chart to accomodate year 2015 without wrapping
+
+commit 8cbd92f9c5acf26963165b14def14d399b9b89f2
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Thu Nov 13 11:17:05 2014 -0800
+
+    Adjust overlay CSS to prevent archive page CSS from overriding overlay styling
+
+commit 6ccd9a1466c5fd050aadc79318cb1252710b2256
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Wed Nov 12 12:26:15 2014 -0800
+
+    Correct alt tag for SUL logo image
+
+commit ddf98a6bb10381c847190adab3ef2e4e4f26a032
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Wed Nov 12 12:24:53 2014 -0800
+
+    Widen overlay input box so longer URLs are visible
+
+commit be28fde09af66ad7a3727101ba81f4a66bb4b20b
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Wed Nov 12 12:19:28 2014 -0800
+
+    Add CSS reset to styles scoped to overlay
+    
+    Added CSS reset to HTML elements used in the overlay to prevent
+    styles used for those elements on an archived page from changing the
+    styling of the elements in the overlay.
+
+commit 07238e5f159440f94aaa45ffc34763414535cf26
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Mon Nov 3 11:11:48 2014 -0800
+
+    Move Toolbar overlay toggle and add drop shadow to overlay
+
+commit 8c18247ef78a97e146178df46ecb88a70886fba3
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Mon Nov 3 10:47:33 2014 -0800
+
+    Rename label to SWAP home link
+
+commit 3468ea5d871271fc6a692cf2032706cb169e19f2
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Wed Oct 22 14:45:41 2014 -0700
+
+    Fix UI spacing problem by adding browser prefixes for box-sizing property
+
+commit 9e7f2e3252055463cc920c8b7a54dafc52006304
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Tue Oct 21 15:08:25 2014 -0700
+
+    Decrease size of font in overlay showing number of captures
+
+commit 10260358c6461d16f169d8a3e2d24f458cb642cc
+Author: Gary Geisler <ggeisler@gmail.com>
+Date:   Tue Oct 21 14:05:46 2014 -0700
+
+    Update styling details
