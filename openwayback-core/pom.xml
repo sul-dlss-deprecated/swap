@@ -10,7 +10,7 @@
 
   <artifactId>openwayback-core</artifactId>
   <groupId>org.netpreserve.openwayback</groupId>
-  <name>OpenWayback Core Java Classes (no Stanford changes)</name>
+  <name>OpenWayback Core Jar minus classes in swap-wayback-core.jar</name>
   <packaging>jar</packaging>
   <version>2.0.0</version>
 
@@ -51,9 +51,9 @@
           </execution>
         </executions>
       </plugin>
-      <!-- <plugin>
+      <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
-        <inherited>false</inherited>
+        <version>3.0.0</version>
         <configuration>
           <descriptors>
             <descriptor>assembly/distribution.xml</descriptor>
@@ -65,11 +65,11 @@
           <execution>
             <phase>package</phase>
             <goals>
-              <goal>attached</goal>
+              <goal>single</goal>
             </goals>
           </execution>
         </executions>
-      </plugin> -->
+      </plugin>
     </plugins>
   </build>
 
