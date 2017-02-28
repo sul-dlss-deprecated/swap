@@ -9,20 +9,9 @@
   </parent>
 
   <artifactId>openwayback-core</artifactId>
-  <groupId>org.netpreserve.openwayback</groupId>
   <name>OpenWayback Core Jar minus classes in swap-wayback-core.jar</name>
   <packaging>jar</packaging>
   <version>2.0.0</version>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.netpreserve.openwayback</groupId>
-      <artifactId>openwayback-core</artifactId>
-      <version>${project.parent.version}</version>
-      <type>jar</type>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
 
   <build>
     <plugins>
