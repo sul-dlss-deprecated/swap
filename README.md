@@ -71,13 +71,24 @@ This contains only those classes with Stanford modifications, and any additional
 
 ```
 cd wayback-core
-mvn clean package
+mvn clean test jar:jar
 ```
 
 creates a jar file: `wayback-core/target/swap-wayback-core-[version].jar` which only contains
 our locally modified classes.
 
-To make changes to wayback-core classes, ...
+To make changes to wayback-core classes, FIXME: ...
+
+
+note that `test jar:jar` gives us what we want, while `jar:jar` alone does not.
+
+jar:jar:  `[WARNING] JAR will be empty - no content was marked for inclusion!`
+package:  
+
+`[WARNING] The POM for edu.stanford.dlss:swap-wayback-webapp:war:2.0.0 is missing, no dependency information available`
+```[ERROR] Failed to execute goal org.apache.maven.plugins:maven-dependency-plugin:3.0.0:unpack (unpack) on project swap-wayback-core: Unable to find/resolve artifact. Failure to find edu.stanford.dlss:swap-wayback-webapp:war:2.0.0 in https://oss.sonatype.org/content/repositories/releases/ was cached in the local repository, resolution will not be reattempted until the update interval of oss.sonatype.org has elapsed or updates are forced -> [Help 1]
+```
+
 
 ### openwayback-core
 
@@ -90,7 +101,22 @@ mvn clean dependency:unpack assembly:single
 
 creates a jar file `openwayback-core/target/openwayback-modified.jar` identical to the upstream openwayback-core jar, but without the Stanford modified classes in wayback-core.
 
-NOTE:  when making changes to wayback-core, be sure to update ...
+FIXME:  this is output
+```
+[INFO] --- maven-assembly-plugin:3.0.0:single (default-cli) @ openwayback-core ---
+[INFO] Reading assembly descriptor: assembly/distribution.xml
+[WARNING] Cannot include project artifact: org.netpreserve.openwayback:openwayback-core:jar:2.0.0; it doesn't have an associated file or directory.
+[INFO] Building jar: /Users/ndushay/sul-dlss-github/swap/openwayback-core/target/openwayback-modified.jar
+[WARNING] Configuration option 'appendAssemblyId' is set to false.
+Instead of attaching the assembly file: /Users/ndushay/sul-dlss-github/swap/openwayback-core/target/openwayback-modified.jar, it will become the file for main project artifact.
+NOTE: If multiple descriptors or descriptor-formats are provided for this project, the value of this file will be non-deterministic!
+```
+
+but otherwise, build is clean.
+
+
+#### NOTE:  when making changes to wayback-core, be sure to update ...
+
 
 
 ### wayback-webapp
@@ -101,17 +127,20 @@ As with IIPC openwayback, maven builds a war file.
 
 ```
 cd wayback-webapp
-mvn package
+mvn clean war:war
 ```
 
 creates a war file in `wayback-webapp/target/swap-[version].war`.  This contains Stanford's modified webapp files and all additional upstream dependencies for the war file EXCEPT for wayback-core files.  We must add the wayback-core files in ourselves to get our local modifications.
 
+
 FIXME:  blah blah
 
 
-### FIXME:  dist or top level build or ...
+###  dist or top level build or ... FIXME:
 
-takes the war file from `wayback-webapp/target/swap-[version].war` and adds in `wayback-core/target/swap-wayback-core-[version].jar` and `openwayback-core/target/openwayback-modified.jar`.  This war file is a deployable artifact that contains Stanford modifications to the upstream IIPC openwayback code. 
+FIXME:  blah blah
+
+takes the war file from `wayback-webapp/target/swap-[version].war` and adds in `wayback-core/target/swap-wayback-core-[version].jar` and `openwayback-core/target/openwayback-modified.jar`.  This war file is a deployable artifact that contains Stanford modifications to the upstream IIPC openwayback code.
 
 
 ### wayback-cdx-server
@@ -120,7 +149,7 @@ Stanford puppet deploys the cdx-server war file, so this is a way for our maven 
 
 ```
 cd wayback-cdx-server
-mvn package
+mvn clean package
 ```
 
 creates a jar file `wayback-cdx-server/target/openwaybck-cdx-server-[version].war` which can be deployed by puppet.  Currently we do this via a jenkins build.  (FIXME:  add details about jenkins)
