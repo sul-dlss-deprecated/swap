@@ -57,3 +57,70 @@ mvn install
 ```
 mvn test -B
 ```
+
+## Development
+
+Top level directory ... blah blah
+
+
+Subdirectories:
+
+### wayback-core
+
+This contains only those classes with Stanford modifications, and any additional classes needed for testing.  The maven build
+
+```
+cd wayback-core
+mvn clean package
+```
+
+creates a jar file: `wayback-core/target/swap-wayback-core-[version].jar` which only contains
+our locally modified classes.
+
+To make changes to wayback-core classes, ...
+
+### openwayback-core
+
+In order to create the final wayback war file, we ensure the java class loader won't have to choose between two versions of a class by REMOVING  from the jar any class present in our wayback-core code.
+
+```
+cd openwayback-core
+mvn clean dependency:unpack assembly:single
+```
+
+creates a jar file `openwayback-core/target/openwayback-modified.jar` identical to the upstream openwayback-core jar, but without the Stanford modified classes in wayback-core.
+
+NOTE:  when making changes to wayback-core, be sure to update ...
+
+
+### wayback-webapp
+
+This contains only those files with Stanford modifications;  we build a war file using the WAR overlay approach (see https://github.com/iipc/openwayback/wiki/Creating-a-WAR-overlay and https://maven.apache.org/plugins/maven-war-plugin/overlays.html).  
+
+As with IIPC openwayback, maven builds a war file.
+
+```
+cd wayback-webapp
+mvn package
+```
+
+creates a war file in `wayback-webapp/target/swap-[version].war`.  This contains Stanford's modified webapp files and all additional upstream dependencies for the war file EXCEPT for wayback-core files.  We must add the wayback-core files in ourselves to get our local modifications.
+
+FIXME:  blah blah
+
+
+### FIXME:  dist or top level build or ...
+
+takes the war file from `wayback-webapp/target/swap-[version].war` and adds in `wayback-core/target/swap-wayback-core-[version].jar` and `openwayback-core/target/openwayback-modified.jar`.  This war file is a deployable artifact that contains Stanford modifications to the upstream IIPC openwayback code. 
+
+
+### wayback-cdx-server
+
+Stanford puppet deploys the cdx-server war file, so this is a way for our maven build to create one.  (TODO: possibly just download the artifact from a maven repo?).  
+
+```
+cd wayback-cdx-server
+mvn package
+```
+
+creates a jar file `wayback-cdx-server/target/openwaybck-cdx-server-[version].war` which can be deployed by puppet.  Currently we do this via a jenkins build.  (FIXME:  add details about jenkins)
