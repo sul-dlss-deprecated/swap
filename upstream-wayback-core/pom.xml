@@ -8,7 +8,7 @@
     <version>2.0.0</version>
   </parent>
 
-  <artifactId>upstream-openwayback-core</artifactId>
+  <artifactId>upstream-wayback-core</artifactId>
   <name>IIPC OpenWayback Core Jar minus classes in swap-wayback-core.jar</name>
   <packaging>jar</packaging>
   <version>2.0.0</version>
