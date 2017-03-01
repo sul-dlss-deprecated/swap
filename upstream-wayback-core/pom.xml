@@ -8,8 +8,8 @@
     <version>2.0.0</version>
   </parent>
 
-  <artifactId>openwayback-core</artifactId>
-  <name>OpenWayback Core Jar minus classes in swap-wayback-core.jar</name>
+  <artifactId>upstream-openwayback-core</artifactId>
+  <name>IIPC OpenWayback Core Jar minus classes in swap-wayback-core.jar</name>
   <packaging>jar</packaging>
   <version>2.0.0</version>
 
@@ -47,7 +47,7 @@
           <descriptors>
             <descriptor>assembly/distribution.xml</descriptor>
           </descriptors>
-          <finalName>openwayback-modified</finalName>
+          <finalName>openwayback-core-modified-${project.version}</finalName>
           <appendAssemblyId>false</appendAssemblyId>
         </configuration>
         <executions>
