@@ -93,21 +93,37 @@ with assembly file: /Users/ndushay/sul-dlss-github/swap/openwayback-core/target/
 FIXME:  blah blah
 
 
-### openwayback-core
+### upstream-wayback-core
 
-In order to create the final wayback war file, we ensure the java class loader won't have to choose between two versions of a class by REMOVING  from the jar any class present in our wayback-core code.
+In order to create the final wayback war file, we must ensure the java class loader won't have to choose between two versions of a class by REMOVING from the upstream IIPC wayback-core jar any class present in swap wayback-core code.
 
 ```
-cd openwayback-core
+cd upstream-wayback-core
 mvn clean dependency:unpack assembly:single # actual goals
-mvn clean install  # installs it in local repo for sibling builds to find
+mvn clean install
 ```
 
-creates a jar file `openwayback-core/target/openwayback-modified.jar` identical to the upstream openwayback-core jar, but without the Stanford modified classes in wayback-core.
+creates a jar file `upstream-wayback-core/target/openwayback-core-modified-[version].jar` identical to the IIPC openwayback-core jar, but without the Stanford modified classes in wayback-core.
 
-#### When making changes to wayback-core, be sure to update ...
+#### When making changes to wayback-core, be sure to update `assembly/distribution.xml`
 
-FIXME:  blah blah
+We must specify which classes to remove from the IIPC openwayback-core.jar file by adding them to the `exclude` list in  `upstream-wayback-core/assembly/distribution.xml`:
+
+```
+<assembly>
+...
+  <fileSets>
+    <fileSet>
+      ...
+      <excludes>
+        <exclude>**/ArchivalUrlSAXRewriteReplayRenderer.class</exclude>
+        <exclude>**/ToolBarData.class</exclude>
+      </excludes>
+      ...
+```
+
+This is how the maven-assembly-plugin will know what to exclude from `upstream-wayback-core/target/openwayback-core-modified-[version].jar`
+
 
 ### wayback-webapp
 
@@ -137,7 +153,7 @@ cd dist
 mvn clean dependency:unpack assembly:single
 ```
 
-takes the war file from `wayback-webapp/target/swap-[version].war` and adds in `wayback-core/target/swap-wayback-core-[version].jar` and `openwayback-core/target/openwayback-modified.jar`.  This war file is a deployable artifact that contains Stanford modifications to the upstream IIPC openwayback code.
+takes the war file from `wayback-webapp/target/swap-[version].war` and adds in `wayback-core/target/swap-wayback-core-[version].jar` and `openwayback-core/target/openwayback-core-modified-[version].jar`.  This war file is a deployable artifact that contains Stanford modifications to the upstream IIPC openwayback code.
 
 
 ### wayback-cdx-server
