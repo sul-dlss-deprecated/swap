@@ -14,7 +14,7 @@
   <name>Stanford's OpenWayback Instance</name>
 
   <modules>
-    <!-- <module>wayback-cdx-server</module> -->
+    <module>upstream-cdx-server</module> <!-- built solely for puppet deployment artifact -->
     <module>upstream-wayback-core</module>
     <module>wayback-core</module>
     <module>wayback-webapp</module>
