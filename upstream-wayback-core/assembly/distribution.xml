@@ -1,5 +1,6 @@
 <assembly>
-  <id>${project.version}</id>
+  <!-- <id>upstream-wayback-core-modified</id> -->
+  <id>upstream-wayback-core</id>
   <formats>
     <format>jar</format>
   </formats>
@@ -14,9 +15,10 @@
   <fileSets>
     <fileSet>
       <directory>${project.build.directory}/unpacked-jar</directory>
-      <!-- <outputDirectory>/</outputDirectory> -->
+      <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/*.class</include>
+        <include>META-INF/*</include>
       </includes>
       <excludes>
         <exclude>**/ArchivalUrlSAXRewriteReplayRenderer.class</exclude>
