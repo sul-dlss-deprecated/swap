@@ -14,9 +14,9 @@
   <name>Stanford's OpenWayback Instance</name>
 
   <modules>
-    <module>wayback-cdx-server</module>
+    <!-- <module>wayback-cdx-server</module> -->
     <module>upstream-wayback-core</module>
-    <!-- <module>wayback-core</module> -->
+    <module>wayback-core</module>
     <!-- <module>wayback-webapp</module> -->
     <!-- <module>dist</module> -->
   </modules>
@@ -43,12 +43,6 @@
         <enabled>false</enabled>
       </snapshots>
       <url>https://oss.sonatype.org/content/repositories/releases/</url>
-    </repository>
-    <repository>
-      <id>oracleReleases</id>
-      <name>Oracle Released Java Packages</name>
-      <url>http://download.oracle.com/maven</url>
-      <layout>default</layout>
     </repository>
   </repositories>
 
@@ -110,50 +104,45 @@
     </pluginManagement>
   </build>
 
-  <!-- Finally, the dependencyManagement - all version coordinates for all
-  dependencies should be specified here, allowing child modules to specify
-  only groupId and artifactId coordinates. -->
   <dependencyManagement>
     <dependencies>
-      <!-- Link all Wayback child module version dependencies to the parent POM version. -->
+      <!-- Link all child module version dependencies to the parent POM version. -->
       <dependency>
-        <artifactId>swap-wayback-core</artifactId>
         <groupId>${project.groupId}</groupId>
-        <version>${project.version}</version>
-        <!-- <classifier>classes</classifier> -->
-      </dependency>
-      <dependency>
         <artifactId>upstream-wayback-core</artifactId>
-        <groupId>${project.groupId}</groupId>
         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>swap-wayback-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <!-- <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>swap-wayback-webapp</artifactId>
+        <version>${project.version}</version>
+      </dependency> -->
+      <dependency>
+        <!-- <groupId>${project.groupId}</groupId> -->
+        <groupId>org.netpreserve.openwayback</groupId>
+        <artifactId>openwayback-cdx-server</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+        <!-- <type>jar</type> -->
         <!-- <classifier>classes</classifier> -->
       </dependency>
-      <dependency>
-        <artifactId>swap-wayback-webapp</artifactId>
-        <groupId>${project.groupId}</groupId>
+      <!-- <dependency>
+        <groupId>org.netpreserve.openwayback</groupId>
+        <artifactId>openwayback-core</artifactId>
         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>openwayback-cdx-server</artifactId>
-        <groupId>${project.groupId}</groupId>
-        <version>${project.version}</version>
-        <type>jar</type>
-        <classifier>classes</classifier>
-      </dependency>
-
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>servlet-api</artifactId>
-        <version>2.5</version>
-        <scope>provided</scope>
-      </dependency>
+      </dependency> -->
 
       <dependency>
         <groupId>org.netpreserve.commons</groupId>
         <artifactId>webarchive-commons</artifactId>
-        <version>1.1.3</version>
+        <version>1.1.4</version>
       </dependency>
-      <dependency>
+      <!-- <dependency>
         <groupId>org.netpreserve.openwayback</groupId>
         <artifactId>openwayback-access-control-core</artifactId>
         <version>1.0.2</version>
@@ -162,7 +151,20 @@
         <groupId>com.googlecode.juniversalchardet</groupId>
         <artifactId>juniversalchardet</artifactId>
         <version>1.0.3</version>
+      </dependency> -->
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>org.htmlparser</groupId>
+        <artifactId>htmlparser</artifactId>
+        <version>1.6</version>
+      </dependency>
+
       <!-- <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
@@ -174,23 +176,18 @@
         <version>${org.springframework.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.htmlparser</groupId>
-        <artifactId>htmlparser</artifactId>
-        <version>1.6</version>
-      </dependency>
-      <dependency>
         <groupId>com.flagstone</groupId>
         <artifactId>transform</artifactId>
         <version>3.0.2</version>
       </dependency> -->
 
+      <!-- test dependencies -->
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>3.8.1</version>
         <scope>test</scope>
       </dependency>
-
       <dependency>
         <groupId>org.jacoco</groupId>
         <artifactId>org.jacoco.agent</artifactId>
@@ -198,6 +195,7 @@
         <version>0.7.8</version>
         <scope>test</scope>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 </project>
