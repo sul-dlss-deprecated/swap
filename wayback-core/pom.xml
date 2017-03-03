@@ -16,30 +16,48 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.netpreserve.openwayback</groupId>
-      <artifactId>openwayback-cdx-server</artifactId>
-      <classifier>classes</classifier>
-      <version>${project.version}</version>
+      <groupId>${project.parent.groupId}</groupId>
+      <artifactId>upstream-wayback-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.netpreserve.openwayback</groupId>
-      <artifactId>openwayback-core</artifactId>
-      <version>${project.version}</version>
+      <artifactId>openwayback-cdx-server</artifactId>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>org.netpreserve.commons</groupId>
+      <artifactId>webarchive-commons</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.htmlparser</groupId>
+      <artifactId>htmlparser</artifactId>
     </dependency>
     <dependency>
     	<groupId>javax.mail</groupId>
     	<artifactId>mail</artifactId>
     	<version>1.4.7</version>
     </dependency>
+
+    <!-- test dependencies -->
     <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <scope>provided</scope>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
     </dependency>
     <dependency>
       <groupId>org.easymock</groupId>
       <artifactId>easymock</artifactId>
       <version>2.5.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>3.0.6.RELEASE</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
