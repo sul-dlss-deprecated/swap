@@ -1,0 +1,201 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+  <groupId>edu.stanford.dlss</groupId>
+  <artifactId>stanford-web-archiving-portal</artifactId>
+  <packaging>pom</packaging>
+  <version>2.0.0</version>
+  <name>Stanford's OpenWayback Instance</name>
+
+  <modules>
+    <!-- <module>wayback-cdx-server</module> -->
+    <module>upstream-wayback-core</module>
+    <module>wayback-core</module>
+    <module>wayback-webapp</module>
+    <!-- <module>dist</module> -->
+  </modules>
+
+  <properties>
+    <website.url>http://github.com/sul-dlss/swap</website.url>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <description>
+    Stanford University Libraries version of [iip/openwayback](https://github.com/iipc/openwayback), a java application to query and access archived web material. This is the code for the Stanford Web Archiving Portal (SWAP).
+  </description>
+
+  <url>http://github.com/sul-dlss/swap</url>
+
+  <repositories>
+    <repository>
+      <id>oss.sonatype.org</id>
+      <name>OSS Sonatype</name>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <url>https://oss.sonatype.org/content/repositories/releases/</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.8</version>
+        <executions>
+          <execution>
+            <id>default-prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <version>4.3.0</version>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.1</version>
+          <!-- <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+          </configuration> -->
+        </plugin>
+        <!-- <plugin>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>maven-jetty-plugin</artifactId>
+          <version>6.1.22</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.4</version>
+        </plugin> -->
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Link all child module version dependencies to the parent POM version. -->
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>upstream-wayback-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>swap-wayback-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <!-- <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>swap-wayback-webapp</artifactId>
+        <version>${project.version}</version>
+      </dependency> -->
+      <dependency>
+        <!-- <groupId>${project.groupId}</groupId> -->
+        <groupId>org.netpreserve.openwayback</groupId>
+        <artifactId>openwayback-cdx-server</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+        <!-- <type>jar</type> -->
+        <!-- <classifier>classes</classifier> -->
+      </dependency>
+      <!-- <dependency>
+        <groupId>org.netpreserve.openwayback</groupId>
+        <artifactId>openwayback-core</artifactId>
+        <version>${project.version}</version>
+      </dependency> -->
+
+      <dependency>
+        <groupId>org.netpreserve.commons</groupId>
+        <artifactId>webarchive-commons</artifactId>
+        <version>1.1.4</version>
+      </dependency>
+      <!-- <dependency>
+        <groupId>org.netpreserve.openwayback</groupId>
+        <artifactId>openwayback-access-control-core</artifactId>
+        <version>1.0.2</version>
+      </dependency>
+      <dependency>
+        <groupId>com.googlecode.juniversalchardet</groupId>
+        <artifactId>juniversalchardet</artifactId>
+        <version>1.0.3</version>
+      </dependency> -->
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.htmlparser</groupId>
+        <artifactId>htmlparser</artifactId>
+        <version>1.6</version>
+      </dependency>
+
+      <!-- <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+        <version>${org.springframework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.flagstone</groupId>
+        <artifactId>transform</artifactId>
+        <version>3.0.2</version>
+      </dependency> -->
+
+      <!-- test dependencies -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>3.8.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jacoco</groupId>
+        <artifactId>org.jacoco.agent</artifactId>
+        <classifier>runtime</classifier>
+        <version>0.7.8</version>
+        <scope>test</scope>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+</project>

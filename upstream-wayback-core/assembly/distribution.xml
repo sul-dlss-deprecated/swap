@@ -1,0 +1,29 @@
+<assembly>
+  <id>upstream-wayback-core</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>${project.build.directory}/repacked-jar</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+
+  <fileSets>
+    <fileSet>
+      <directory>${project.build.directory}/unpacked-jar</directory>
+      <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>**/*.class</include>
+        <include>META-INF/*</include>
+      </includes>
+      <excludes>
+        <exclude>**/ArchivalUrlSAXRewriteReplayRenderer.class</exclude>
+        <exclude>**/ToolBarData.class</exclude>
+      </excludes>
+    </fileSet>
+  </fileSets>
+
+</assembly>
