@@ -1,0 +1,36 @@
+<assembly>
+  <id>dist-swap-$version</id>
+  <formats>
+    <format>war</format>
+  </formats>
+
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <moduleSets>
+    <moduleSet>
+      <useAllReactorProjects>true</useAllReactorProjects>
+      <includes>
+        <include>edu.stanford.dlss:swap-wayback-core</include>
+        <include>edu.stanford.dlss:upstream-wayback-core</include>
+      </includes>
+      <binaries>
+        <outputDirectory>modules/maven-assembly-plugin</outputDirectory>
+        <unpack>false</unpack>
+      </binaries>
+    </moduleSet>
+  </moduleSets>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>${project.build.directory}/repacked-war</outputDirectory>
+    </dependencySet>
+  </dependencySets>
+
+  <fileSets>
+    <fileSet>
+      <directory>${project.build.directory}/unpacked-war</directory>
+      <outputDirectory />
+    </fileSet>
+  </fileSets>
+
+</assembly>

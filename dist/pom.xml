@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>edu.stanford.dlss</groupId>
+    <artifactId>stanford-web-archiving-portal</artifactId>
+    <version>2.0.0</version>
+  </parent>
+
+  <artifactId>swap-distrib</artifactId>
+  <name>swap.war for distribution</name>
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>swap-wayback-webapp</artifactId>
+      <version>${project.parent.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>swap-wayback-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>upstream-wayback-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <artifactItems>
+            <artifactItem>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>swap-wayback-webapp</artifactId>
+              <version>${project.parent.version}</version>
+              <type>war</type>
+              <outputDirectory>${project.build.directory}/unpacked-war</outputDirectory>
+            </artifactItem>
+          </artifactItems>
+        </configuration>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <descriptors>
+            <descriptor>assembly/distribution.xml</descriptor>
+          </descriptors>
+          <finalName>swap-dist-${project.version}</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -14,7 +14,7 @@
   <fileSets>
     <fileSet>
       <directory>${project.build.directory}/unpacked-jar</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory />
       <includes>
         <include>**/*.class</include>
         <include>META-INF/*</include>

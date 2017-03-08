@@ -18,7 +18,7 @@
     <module>upstream-wayback-core</module>
     <module>wayback-core</module>
     <module>wayback-webapp</module>
-    <!-- <module>dist</module> -->
+    <module>dist</module>
   </modules>
 
   <properties>
@@ -80,26 +80,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.6.1</version>
-          <!-- <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
-          </configuration> -->
         </plugin>
-        <!-- <plugin>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>maven-jetty-plugin</artifactId>
-          <version>6.1.22</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.7</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jxr-plugin</artifactId>
-          <version>2.4</version>
-        </plugin> -->
       </plugins>
     </pluginManagement>
   </build>
@@ -123,35 +104,16 @@
         <version>${project.version}</version>
       </dependency> -->
       <dependency>
-        <!-- <groupId>${project.groupId}</groupId> -->
         <groupId>org.netpreserve.openwayback</groupId>
         <artifactId>openwayback-cdx-server</artifactId>
         <version>${project.version}</version>
         <type>war</type>
-        <!-- <type>jar</type> -->
-        <!-- <classifier>classes</classifier> -->
       </dependency>
-      <!-- <dependency>
-        <groupId>org.netpreserve.openwayback</groupId>
-        <artifactId>openwayback-core</artifactId>
-        <version>${project.version}</version>
-      </dependency> -->
-
       <dependency>
         <groupId>org.netpreserve.commons</groupId>
         <artifactId>webarchive-commons</artifactId>
         <version>1.1.4</version>
       </dependency>
-      <!-- <dependency>
-        <groupId>org.netpreserve.openwayback</groupId>
-        <artifactId>openwayback-access-control-core</artifactId>
-        <version>1.0.2</version>
-      </dependency>
-      <dependency>
-        <groupId>com.googlecode.juniversalchardet</groupId>
-        <artifactId>juniversalchardet</artifactId>
-        <version>1.0.3</version>
-      </dependency> -->
 
       <dependency>
         <groupId>javax.servlet</groupId>
@@ -164,22 +126,6 @@
         <artifactId>htmlparser</artifactId>
         <version>1.6</version>
       </dependency>
-
-      <!-- <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>${org.springframework.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-beans</artifactId>
-        <version>${org.springframework.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.flagstone</groupId>
-        <artifactId>transform</artifactId>
-        <version>3.0.2</version>
-      </dependency> -->
 
       <!-- test dependencies -->
       <dependency>
