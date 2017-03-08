@@ -2,18 +2,21 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- built solely for puppet deployment artifact -->
+
   <parent>
     <groupId>edu.stanford.dlss</groupId>
     <artifactId>stanford-web-archiving-portal</artifactId>
     <version>2.0.0</version>
   </parent>
 
-  <artifactId>swap-wayback-webapp</artifactId>
+  <groupId>org.netpreserve.openwayback</groupId>
+  <artifactId>openwayback-cdx-server</artifactId>
   <packaging>war</packaging>
-  <name>Stanford Web Archiving Portal Overlay</name>
+  <name>Wayback CDX Server (no Stanford changes)</name>
+  <version>2.0.0</version>
 
   <build>
-    <finalName>swap-${project.version}</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -23,10 +26,7 @@
           <overlays>
             <overlay>
               <groupId>org.netpreserve.openwayback</groupId>
-              <artifactId>openwayback-webapp</artifactId>
-              <excludes>
-                <exclude>WEB-INF/lib/openwayback-core-${project.version}.jar</exclude>
-              </excludes>
+              <artifactId>openwayback-cdx-server</artifactId>
             </overlay>
           </overlays>
         </configuration>
@@ -37,18 +37,8 @@
   <dependencies>
     <dependency>
       <groupId>org.netpreserve.openwayback</groupId>
-      <artifactId>openwayback-webapp</artifactId>
-      <version>${project.version}</version>
+      <artifactId>openwayback-cdx-server</artifactId>
       <type>war</type>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>swap-wayback-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.parent.groupId}</groupId>
-      <artifactId>upstream-wayback-core</artifactId>
     </dependency>
   </dependencies>
 
