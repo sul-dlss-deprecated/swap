@@ -12,10 +12,6 @@
   <packaging>war</packaging>
   <name>Stanford Web Archiving Portal Overlay</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
   <build>
     <finalName>swap-${project.version}</finalName>
     <plugins>
