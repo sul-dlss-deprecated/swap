@@ -23,6 +23,10 @@
         <exclude>**/ArchivalUrlSAXRewriteReplayRenderer.class</exclude>
         <exclude>**/ToolBarData.class</exclude>
         <exclude>**/util/Timestamp.class</exclude>
+        <exclude>**/GraphConfiguration.class</exclude>
+        <exclude>**/RegionGraphElement.class</exclude>
+        <exclude>**/ValueGraphElement.class</exclude>
+        <exclude>**/ValueGraphElements.class</exclude>
       </excludes>
     </fileSet>
   </fileSets>
