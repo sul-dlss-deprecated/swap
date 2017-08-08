@@ -64,7 +64,8 @@ public class RegionGraphElement extends RectangularGraphElement {
   public void draw(Graphics2D g2d) {
 
     if (data.hasHighlightedValue()) {
-      g2d.setColor(config.regionHighlightColor);
+      // g2d.setColor(config.regionHighlightColor);
+      g2d.setColor(config.backgroundColor); // Stanford
       g2d.fillRect(x + 1, y+1, width - 1, height-2);
     }
 
