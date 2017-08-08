@@ -26,6 +26,8 @@
               <artifactId>openwayback-webapp</artifactId>
               <excludes>
                 <exclude>WEB-INF/lib/openwayback-core-${project.version}.jar</exclude>
+                <!-- exclude the vulnerable commons-collections v3.2.1 -->
+                <exclude>WEB-INF/lib/commons-collections-3.2.1.jar</exclude>
               </excludes>
             </overlay>
           </overlays>
@@ -35,6 +37,13 @@
   </build>
 
   <dependencies>
+    <!-- explicitly require a patched commons-collections (to avoid vulnerable v3.2.1) -->
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+
     <dependency>
       <groupId>org.netpreserve.openwayback</groupId>
       <artifactId>openwayback-webapp</artifactId>
