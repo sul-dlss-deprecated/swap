@@ -22,6 +22,7 @@
       <excludes>
         <exclude>**/ArchivalUrlSAXRewriteReplayRenderer.class</exclude>
         <exclude>**/ToolBarData.class</exclude>
+        <exclude>**/util/Timestamp.class</exclude>
       </excludes>
     </fileSet>
   </fileSets>
