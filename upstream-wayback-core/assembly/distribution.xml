@@ -17,6 +17,7 @@
       <outputDirectory />
       <includes>
         <include>**/*.class</include>
+        <include>**/*.properties</include>
         <include>META-INF/*</include>
       </includes>
       <excludes>
