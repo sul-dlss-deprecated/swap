@@ -45,19 +45,19 @@
     </dependency>
 
     <dependency>
-      <groupId>org.netpreserve.openwayback</groupId>
-      <artifactId>openwayback-webapp</artifactId>
-      <version>${project.version}</version>
-      <type>war</type>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>swap-wayback-core</artifactId>
     </dependency>
     <dependency>
       <groupId>${project.parent.groupId}</groupId>
       <artifactId>upstream-wayback-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.netpreserve.openwayback</groupId>
+      <artifactId>openwayback-webapp</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
