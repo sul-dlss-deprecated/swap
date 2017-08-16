@@ -7,10 +7,17 @@
     <version>7</version>
   </parent>
 
+  <properties>
+    <website.url>http://github.com/sul-dlss/swap</website.url>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <upstream.version>2.0.0</upstream.version>
+    <stanford.version>${upstream.version}SUL1.0.0</stanford.version>
+  </properties>
+
   <groupId>edu.stanford.dlss</groupId>
   <artifactId>stanford-web-archiving-portal</artifactId>
   <packaging>pom</packaging>
-  <version>2.0.0</version>
+  <version>${stanford.version}</version>
   <name>Stanford's OpenWayback Instance</name>
 
   <modules>
@@ -20,11 +27,6 @@
     <module>wayback-webapp</module>
     <module>dist</module>
   </modules>
-
-  <properties>
-    <website.url>http://github.com/sul-dlss/swap</website.url>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <description>
     Stanford University Libraries version of [iip/openwayback](https://github.com/iipc/openwayback), a java application to query and access archived web material. This is the code for the Stanford Web Archiving Portal (SWAP).
@@ -106,7 +108,7 @@
       <dependency>
         <groupId>org.netpreserve.openwayback</groupId>
         <artifactId>openwayback-cdx-server</artifactId>
-        <version>${project.version}</version>
+        <version>${upstream.version}</version>
         <type>war</type>
       </dependency>
       <dependency>

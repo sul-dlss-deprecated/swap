@@ -5,7 +5,8 @@
   <parent>
     <groupId>edu.stanford.dlss</groupId>
     <artifactId>stanford-web-archiving-portal</artifactId>
-    <version>2.0.0</version>
+    <version>${stanford.version}</version>
+    <relativePath>..</relativePath>
   </parent>
 
   <artifactId>swap-wayback-webapp</artifactId>
@@ -25,7 +26,7 @@
               <groupId>org.netpreserve.openwayback</groupId>
               <artifactId>openwayback-webapp</artifactId>
               <excludes>
-                <exclude>WEB-INF/lib/openwayback-core-${project.version}.jar</exclude>
+                <exclude>WEB-INF/lib/openwayback-core-${upstream.version}.jar</exclude>
                 <!-- exclude the vulnerable commons-collections v3.2.1 -->
                 <exclude>WEB-INF/lib/commons-collections-3.2.1.jar</exclude>
               </excludes>
@@ -55,7 +56,7 @@
     <dependency>
       <groupId>org.netpreserve.openwayback</groupId>
       <artifactId>openwayback-webapp</artifactId>
-      <version>${project.version}</version>
+      <version>${upstream.version}</version>
       <type>war</type>
       <scope>runtime</scope>
     </dependency>
