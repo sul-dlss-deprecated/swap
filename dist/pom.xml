@@ -4,7 +4,7 @@
   <parent>
     <groupId>edu.stanford.dlss</groupId>
     <artifactId>stanford-web-archiving-portal</artifactId>
-    <version>2.0.0</version>
+    <version>${stanford.version}</version>
   </parent>
 
   <artifactId>swap-distrib</artifactId>

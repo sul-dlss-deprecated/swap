@@ -7,14 +7,15 @@
   <parent>
     <groupId>edu.stanford.dlss</groupId>
     <artifactId>stanford-web-archiving-portal</artifactId>
-    <version>2.0.0</version>
+    <version>${stanford.version}</version>
+    <relativePath>..</relativePath>
   </parent>
 
   <groupId>org.netpreserve.openwayback</groupId>
   <artifactId>openwayback-cdx-server</artifactId>
   <packaging>war</packaging>
   <name>Wayback CDX Server (no Stanford changes)</name>
-  <version>2.0.0</version>
+  <version>${upstream.version}</version>
 
   <build>
     <plugins>
@@ -38,6 +39,7 @@
     <dependency>
       <groupId>org.netpreserve.openwayback</groupId>
       <artifactId>openwayback-cdx-server</artifactId>
+      <version>${upstream.version}</version>
       <type>war</type>
     </dependency>
   </dependencies>
