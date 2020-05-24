@@ -45,6 +45,7 @@ String replayPrefix = results.getReplayPrefix();
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-7219229-29', 'auto');
+      ga('set', 'anonymizeIp', true);
       ga('send', 'pageview');
     </script>
   </head>
